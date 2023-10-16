@@ -7,18 +7,21 @@
 %   Rogerio Cardoso
 
 \documentclass[11pt,twoside]{article}
+
+%% Fontes & Template
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazilian]{babel}
 \usepackage{anyfontsize}
 \usepackage{template/techrep-PFG-ic}
 
-%%% SE USAR INGLÊS, TROQUE AS ATIVAÇÕES DOS DOIS COMANDOS A SEGUIR:
-\usepackage[brazil]{babel}
-%% \usepackage[english]{babel}
+%% Referências
+\usepackage{csquotes}
+\usepackage{biblatex}
+\addbibresource{references.bib}
 
-%%% SE USAR CODIFICAÇÃO LATIN1, TROQUE AS ATIVAÇÕES DOS DOIS COMANDOS A
-%%% SEGUIR:
-%% \usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
-
+%%%%%%%%%%%%%%%
+%% Documento %%
 \begin{document}
 
     %%% PÁGINA DE CAPA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -102,22 +105,13 @@
     soluções fraca- e medianamente concentradas de 1-metil-metanol
     em hidróxido de hidrônio aquoso ($\rm H_3O^{+} HO^{-}\cdot {\mathit n}H_2O$)
     tem sido objeto de intensos estudos experimentais por
-    cientistas no mundo todo~\cite{AHU,KNU}.
+    cientistas no mundo todo~\cite{teixeira_algorithms_2021}.
 
     Durante os últimos 20 anos, os autores coordenaram uma equipe
     multidiplinar de pesquisadores, na UNICAMP e em outras instituições,
     cujo objetivo derradeiro é elucidar e quantificar a relação entre...
 
-    \begin{thebibliography}{99}
-        \bibitem{AHU} A. V. Aho, J. E. Hopcroft and J.  D.  Ullman, {\it The
-        Design and Analysis of Computer Algorithms,} Addison-Wesley (1901).
-
-        \bibitem{KNU} D. E. Knuth and L. Lamport, {\it A structural analysis
-        of the role of gnus and gnats in the post-modernistic, crypto-existential
-        Weltanschauung of neo-liberal Tibeto-Vietnamese leaf blower operators
-        as manifest in the sexual symbology of the Los Angeles Phone Directory}.
-        Journal of Gnu Technology, {\bf 23} (6), 12--87
-        (March 1996).
-    \end{thebibliography}
+    \section{Referências}
+        \printbibliography
 
 \end{document}
