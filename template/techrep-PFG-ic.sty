@@ -3,10 +3,10 @@
 % Based on 2010-03-16 17:57:54 by stolfi
 % Based on rel-tec-ic.sty of 23 May 1996, by Pedro J. de Rezende.
 %
-% The package techrep-ic defines a \TRMakeCover macro that 
+% The package techrep-ic defines a \TRMakeCover macro that
 % prints a cover page for the standard IC-Unicamp technical report
 % format. The various cover fields (title, author, report number, etc.)
-% are defined by auxiliary macros \TRTitile, \TRAuthor, \TRMonth, etc.. 
+% are defined by auxiliary macros \TRTitile, \TRAuthor, \TRMonth, etc..
 %
 % Modified 1997-06 by J. Stolfi:
 %   Removed list of previous reports.
@@ -20,12 +20,12 @@
 %   Redefined \TRMonth to take a numeric month.
 %   Redefined \TRNumber to take 3 digits.
 %   Added the Institute's name, logo, and color background.
-%   
+%
 % Modified 2010-03-06 by J. Stolfi:
 %   Added UNICAMP's logo and used new version of IC logo.
 %   Modified background to be colored outline only.
 %   Moved the technical report number and date out of the title box.
-%   
+%
 % Modified 2010-03-16 by J. Stolfi:
 %   Swapped title box with IC/UNICAMP header, for the sake of Citeseer.
 %   Made the cover margins independent of the report's page geometry.
@@ -34,11 +34,11 @@
 %   Changed title font size, for the sake of Google Scholar.
 %   Changed title box size to handle larger titles
 
-\ProvidesPackage{techrep-ic}
+\ProvidesPackage{template/techrep-PFG-ic}
 \RequirePackage{graphicx}
 \RequirePackage{color}
-\RequirePackage{logo-ic-unicamp}
-\RequirePackage{logo-unicamp}
+\RequirePackage{template/logo-ic-unicamp}
+\RequirePackage{template/logo-unicamp}
 
 \ifx\xipt\undefined
   \typeout{LaTeX 2e package `techrep-ic' -- Release 2010-03-08}
@@ -61,18 +61,18 @@
   \def\TRMonth#1{\def\TR@month{#1}}
 
   % Examples (and default values):
-  
+
   \TRTitle{A Generic Technical Report}
   \TRAuthor{Generic Author One and Generic Author Two and Generic Author Three}
   \TRNumber{999}
   \TRYear{2999}
   \TRMonth{\month}
-  
+
   % Then call \TRMakeCover to output the cover page:
-  
+
   \def\TRMakeCover{\TR@MakeCover}
 
- 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FORMAT SETTINGS FOR REPORT BODY
 
@@ -88,13 +88,13 @@
   \textheight=8.25in
   \textwidth=6.00in
 
-  
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % IMPLEMENTATION
 % Users need not read past this point.
 
 
-  % Create the fonts needed for the main page, independent of the 
+  % Create the fonts needed for the main page, independent of the
   % fonts used in the report's body:
 
   \ifx\xipt\undefined
@@ -118,20 +118,20 @@
     \newcommand{\TR@normal}{\normalsize}
     \newcommand{\TR@Large}{\Large}
     \newcommand{\TR@small}{\small}
-    \xipt 
+    \xipt
   \fi
 
   % Define the \TR@MakeCover macro that typesets and prints the cover page:
 
   \def\TR@MakeCover{
-    
+
     \bgroup
 
       % ----------------------------------------------------------------------
       % Internal macros
 
       % Define the colors of the cover:
-      
+
       \ifx\fcolorbox\undefined
         % We could not get the color macros:
       \else
@@ -142,7 +142,7 @@
       % \TR@decobox{FRCOLOR}{FRTHICK}{FRSPACE}{BGCOLOR}{STUFF}
       % Puts {STUFF} in a box with background {BGCOLOR} and a border
       % of color {FRCOLOR}, thickness {FRTHICK}, and extra margin {FRSPACE}
-      % all around. The dimensions must have units. 
+      % all around. The dimensions must have units.
 
       \ifx\fcolorbox\undefined
         % We could not get the color macros. Make do with black and white:
@@ -154,7 +154,7 @@
 
       % \TR@makebox{WIDTH}{HEIGHT}{STUFF}
       % Puts {STUFF} centered in a box of size {WIDTH} by {HEIGHT}.
-      % The dimensions should be pure numbers and are interpreted as mm. 
+      % The dimensions should be pure numbers and are interpreted as mm.
 
       \long\def\TR@makebox##1##2##3{
         \vbox to ##2 mm{\offinterlineskip
@@ -163,50 +163,50 @@
           \vss\null
         }
       }
-      
+
       % ----------------------------------------------------------------------
       % Main dimensions:
-      
+
       % Overall area spanned by colored frames
       \def\TR@CoverSX{190.0}    % ~7.5 inches.
       \def\TR@CoverSY{254.0}    % 10.0 inches.
-      
+
       % XY coordinates and dimensions of school name box
-      \def\TR@BannerDX{40.0} 
+      \def\TR@BannerDX{40.0}
       \def\TR@BannerDY{60.0}
       \def\TR@BannerSX{110.0}
       \def\TR@BannerSY{30.0}
 
       % XY coordinates and dimensions of report title box
-      \def\TR@TitleDX{35.0}  
-      \def\TR@TitleDY{145.0} 
+      \def\TR@TitleDX{35.0}
+      \def\TR@TitleDY{145.0}
       \def\TR@TitleSX{120.0}
       \def\TR@TitleSY{60.0}
 
       % XY coordinates and dimensions of report number and date
-      \def\TR@NumDateDX{35.0}  
-      \def\TR@NumDateDY{105.0} 
+      \def\TR@NumDateDX{35.0}
+      \def\TR@NumDateDY{105.0}
       \def\TR@NumDateSX{120.0}
       \def\TR@NumDateSY{15.0}
 
       % XY coordinates and width of disclaimer text
-      \def\TR@NoteDX{15.0}  
-      \def\TR@NoteDY{20.0} 
+      \def\TR@NoteDX{15.0}
+      \def\TR@NoteDY{20.0}
       \def\TR@NoteSX{170.0}
-      
+
       % XY coordinates of UNICAMP logo
-      \def\TR@UnicampLogoDX{10.0} 
+      \def\TR@UnicampLogoDX{10.0}
       \def\TR@UnicampLogoDY{220.0}
 
       % XY coordinates of IC logo
-      \def\TR@ICLogoDX{159.0} 
+      \def\TR@ICLogoDX{159.0}
       \def\TR@ICLogoDY{220.0}
-      
+
       % ----------------------------------------------------------------------
       % Typeset the banner with logos and save in box \TR@Banner:
-      
+
       \newsavebox{\TR@Banner}
-      
+
       \savebox{\TR@Banner}{
         \hbox{
           \begin{minipage}[c]{\TR@BannerSX mm}
@@ -218,12 +218,12 @@
           \end{minipage}
         }
       }
-      
+
       % ----------------------------------------------------------------------
       % Typeset the report's title box and save it in \TR@Title:
 
       \newsavebox{\TR@Title}
-      
+
       \savebox{\TR@Title}{
         \vbox to\TR@TitleSY mm{
           \hsize=\TR@TitleSX mm
@@ -252,12 +252,12 @@
           \null
         }
       }
-      
+
       % ----------------------------------------------------------------------
       % Typeset the report's number and date and save it in \TR@NumDate:
 
       \newsavebox{\TR@NumDate}
-      
+
       \savebox{\TR@NumDate}{
         \vbox to\TR@NumDateSY mm{
           \hsize=\TR@NumDateSX mm
@@ -290,11 +290,11 @@
       % Create the cover as one big box and save it in \TR@Cover:
 
       \newsavebox{\TR@Cover}
-  
+
       \savebox{\TR@Cover}{
         \setlength{\unitlength}{1mm}
         \begin{picture}(\TR@CoverSX,\TR@CoverSY)
-        
+
           % Left sky blue outline:
           {
             \color{TRblu}
@@ -312,7 +312,7 @@
             \put(28.88,206.0){\line(1,0){10.24}}
             \put(39.0,205.88){\line(0,1){48.24}}
           }
-          
+
           {
             \color{TRora}
             \thicklines
@@ -329,15 +329,15 @@
             \put(40.88,206.0){\line(1,0){120.24}}
             \put(41.0,205.88){\line(0,1){48.24}}
           }
-          
+
           \put(\TR@UnicampLogoDX,\TR@UnicampLogoDY){
             \makebox(0,0)[bl]{\hbox{\LogoUnicamp}}
           }
-          
+
           \put(\TR@ICLogoDX,\TR@ICLogoDY){
             \makebox(0,0)[bl]{\hbox{\LogoIcUnicamp}}
           }
-          
+
           \put(\TR@BannerDX,\TR@BannerDY){
             \makebox(\TR@BannerSX,\TR@BannerSY){
               \begin{minipage}[c]{\TR@BannerSX mm}
@@ -413,17 +413,17 @@
 
   \def\TR@monthP{
     \ifcase\TR@month\or
-    Janeiro\or Fevereiro\or Mar\c{c}o\or 
-    Abril\or Maio\or Junho\or 
-    Julho\or Agosto\or Setembro\or 
+    Janeiro\or Fevereiro\or Mar\c{c}o\or
+    Abril\or Maio\or Junho\or
+    Julho\or Agosto\or Setembro\or
     Outubro\or Novembro\or Dezembro\fi
   }
 
   \def\TR@monthE{
     \ifcase\TR@month\or
-    January\or February\or March\or 
-    April\or May\or June\or 
-    July\or August\or September\or 
+    January\or February\or March\or
+    April\or May\or June\or
+    July\or August\or September\or
     October\or November\or December\fi
   }
 

@@ -1,19 +1,19 @@
 % UNICAMP's logo
-{ 
+{
   \def\release{2010-03-08}
   \def\lastedit{2010-03-12 23:28:46 by stolfi}
-  \typeout{logo-unicamp.sty release {\release} last edit {\lastedit}} 
+  \typeout{logo-unicamp.sty release {\release} last edit {\lastedit}}
 }
-\ProvidesPackage{logo-unicamp}
+\ProvidesPackage{template/logo-unicamp}
 \RequirePackage{graphicx}
 
 % MACROS DEFINED IN THIS PACKAGE
-% 
-%   \LogoUnicamp 
+%
+%   \LogoUnicamp
 %     This macro produces a fixed-size square box containing the UNICAMP
 %     logo, including the "UNICAMP" text at the bottom and whatever blank
 %     padding is necessary. Use \scalebox{SCALE}{\LogoUnicamp} etc. to resize it.
-% 
+%
 %   \LogoUnicampBare
 %     This macro produces the UNICAMP logo, with the text underneath,
 %     in a tight-fitting box, scaled to have same width
@@ -22,13 +22,13 @@
 % PARAMETERS
 %     These parameters determine the location and style of the default
 %     logo images. Redefine with \renewcommand as appropriate.
-% 
+%
     \newcommand{\LogoUnicampSize}{60pt}
 %     The height and width of the logo box, including name (if any)
-% 
-    \newcommand{\LogoUnicampFile}{logo-unicamp.eps}
+%
+    \newcommand{\LogoUnicampFile}{template/logo-unicamp.eps}
 %     The name (relative to the current directory) of the EPS file that
-%     contains the UNICAMP logo.  
+%     contains the UNICAMP logo.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Users should not need to read below this point

@@ -1,15 +1,15 @@
 % Institute of Computing's logo
-{ 
+{
   \def\release{2010-03-08}
   \def\lastedit{2010-03-13 11:10:17 by stolfi}
-  \typeout{logo-ic-unicamp.sty release {\release} last edit {\lastedit}} 
+  \typeout{logo-ic-unicamp.sty release {\release} last edit {\lastedit}}
 }
 
-\ProvidesPackage{logo-ic-unicamp}
+\ProvidesPackage{template/logo-ic-unicamp}
 \RequirePackage{graphicx}
 
 % MACROS DEFINED IN THIS PACKAGE
-% 
+%
 %   \LogoIcUnicamp
 %     This macro produces the IC logo packaged in a fixed-size square box,
 %     without any lettering and with the necessary padding. Use
@@ -24,15 +24,15 @@
 %     This macro produces the IC abacus, without any lettering,
 %     in a tight-fitting box, scaled to have the same width as
 %     the standard logo box but with a different height.
-% 
+%
 % PARAMETERS
 %     These parameters determine the location and style of the default
 %     logo images. Redefine with \renewcommand as appropriate.
-% 
+%
     \newcommand{\LogoIcUnicampSize}{60pt}
 %     The height and width of the logo box, including name (if any)
-%   
-    \newcommand{\LogoIcUnicampFile}{logo-ic-unicamp.eps}
+%
+    \newcommand{\LogoIcUnicampFile}{template/logo-ic-unicamp.eps}
 %     The name (relative to the current directory) of the EPS image file
 %     that contains the IC-UNICAMP logo.
 
