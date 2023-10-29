@@ -1,7 +1,6 @@
 \usepackage{clrscode3e}
 \usepackage{xspace}
 
-
 %% KEYWORDS PADRÃO %%
 
 \newcommand{\Para}{\kw{para}\xspace}
@@ -19,7 +18,6 @@
 % \Sync
 % \Parfor
 
-
 %% ADICIONAIS %%
 
 \newcommand{\Cada}{\kw{cada}\xspace}
@@ -29,3 +27,18 @@
 \newcommand{\Seja}{\kw{seja}\xspace}
 \newcommand{\Sejam}{\kw{sejam}\xspace}
 \newcommand{\Recebe}{\leftarrow}
+
+\usepackage{newfloat}
+\usepackage[nameinlink,noabbrev,brazilian]{cleveref}
+
+\DeclareFloatingEnvironment[
+    %listname = ⟨list name⟩,
+    name = Algoritmo,
+    % autorefname = pseudo,
+    %legendname= ⟨name used in \legend offered by memoir⟩,
+    %placement= ⟨combination of htbp⟩,
+    %within= ⟨“within” counter⟩ or none,
+    %chapterlistsgaps= on or off 1,
+]{algorithm}
+\crefname{algorithm}{algoritmo}{algoritmos}
+\Crefname{algorithm}{Algoritmo}{Algoritmos}

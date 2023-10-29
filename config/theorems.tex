@@ -37,7 +37,6 @@
 %% Ambiente para Teoremas %%
 \declaretheoremstyle[
     thmbox = M,
-    sharenumber = theorem,
     preheadhook = \vskip1.5em,
     postheadhook = \theorembookmark\reducemathskip,
 ]{teorema}
@@ -47,19 +46,18 @@
     % refname = {teorema,teoremas},
     % Refname= {Teorema,Teoremas},
     style = teorema,
-    numberwithin = section
 ]
 \declaretheorem{lemma}[
     name  = Lema,
-    style = teorema
+    style = teorema,
 ]
 \declaretheorem{proposition}[
     name  = Proposição,
-    style = teorema
+    style = teorema,
 ]
 \declaretheorem{corollary}[
     name  = Corolário,
-    style = teorema
+    style = teorema,
 ]
 
 %% Ambiente para Definições %%
@@ -68,9 +66,8 @@
     refname = {definição,definições},
     Refname= {Definição,Definições},
     %
-    style = definition,
-    numberlike = theorem,
-    postheadhook = \theorembookmark\reducemathskip
+    style = teorema,
+    postheadhook = \theorembookmark\reducemathskip,
 ]
 % Sem numeração
 \declaretheorem{definition*}[
@@ -105,3 +102,6 @@
 }
 
 \makeatother
+
+\usepackage{silence}
+\WarningFilter{mathptmx}{There are no bold math fonts}

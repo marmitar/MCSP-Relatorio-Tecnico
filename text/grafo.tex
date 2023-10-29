@@ -1,17 +1,17 @@
 Outra forma de construir soluções boas para o MCSP é utilizando meta-heurísticas, i.e., algoritmos de otimização que utilizam aleatorização em conjunto com busca local \cite[p.~4]{yang_nature-inspired_2010}. Antes de aplicar algum dos vários algoritmos conhecidos, no entanto, é necessário representar as instâncias do problema utilizando uma estrutura de dados eficiente e adequada para tais procedimentos. Encontrar uma boa representação para problemas complexos, como esse, é uma etapa desafiadora, mas que pode simplificar muito a resolução.
 
 \begin{definition}
-    Um \textbf{bloco} $S[a, b]$ de uma string $S$, com $1 \leq a \leq b \leq |S|$ é a substring de $S$ que inicia no índice $a$ e termina no índice $b$.
+    Um \textbf{bloco} $S[a, b]$ de uma string $S$, com $1 \leq a \leq b \leq \abs{S}$ é a substring de $S$ que inicia no índice $a$ e termina no índice $b$.
 \end{definition}
 
 Desenvolvemos uma representação na qual uma instância $(S, P)$ é dada por um grafo que contém as informações necessárias sobre da relação entre $S$ e $P$. Os vértices são os índices dos caracteres de $S$ e cada aresta entre dois caracteres representa um bloco entre eles e um outro bloco igual em $P$. Representações parecidas com essa já foram utilizadas para a aplicação de meta-heurísticas no MCSP de forma diferente da aqui apresentada \cite{ferdous_solving_2013}.
 
-De forma mais formal, uma entrada $(S, P)$ do problema é representada pelo multigrafo $G_{S, P}(V, E, \phi)$, em que
+De forma mais formal, uma entrada $(S, P)$ do problema é representada pelo multigrafo $G_{S, P}(V, E, \varphi)$, em que
 
 \begin{itemize}
-    \item $V = \{ 1, ..., |S| \}$
-    \item $e_{s, p, k} \in E \iff S[s, s + k] = P[p, p + k] \text{ e } k \neq 0$
-    \item $\phi(e_{s, p, k}) = (s, s + k)$
+    \item $V = \set{ 1, \ldots, n = \abs{S}} = I_n$
+    \item $e_{s, p, k} \in E \iff S_s \ldots S_{s + k - 1} = \left\langle P_p, \ldots, P_{p + k - 1} \right\rangle \text{ e } k \geq 2$
+    \item $\varphi\left(e_{s, p, k}\right) = (s, s + k - 1)$
 \end{itemize}
 
 Note que cada par de bloco representado por uma aresta pode ser utilizado na construção de uma partição comum entre as strings. Arestas paralelas indicam que existe mais de um bloco em $P$ igual à substring formada pelos caracteres entre suas extremidades. Um exemplo da representação pode ser visto na \cref{fig:grafo}.
@@ -21,7 +21,8 @@ Note que cada par de bloco representado por uma aresta pode ser utilizado na con
 \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth]{images/grafo.pdf}
-    \caption{Grafo representando a instância (\texttt{"abba"},~\texttt{"abab"}).}
+    
+    \caption{Grafo representando a instância (\texttt{"abba"}, \texttt{"abab"}).}
     \label{fig:grafo}
     \todo[inline]{Trocar a figura}
 \end{figure}

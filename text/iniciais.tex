@@ -3,21 +3,27 @@
 
     A heurística de combinação consiste em um algoritmo que inicia com uma solução trivial do problema (blocos de um caractere cada) e tenta agrupar blocos mantendo uma solução válida. A implementação escolhida consiste em analisar os blocos das strings da esquerda para a direita e agrupá-los sempre que possível, como mostra o \cref{alg:combine}. A escolha genérica de quais blocos serão combinados, no entanto, compromete a qualidade da solução gerada.
 
-    \begin{codebox}
-    \Procname{$\proc{Combinação}(S, P)$}  \label{alg:combine}
+    \todo[inline]{Inserir pseudocódigo para cada heurística}
 
-    \li $B_S \Recebe \text{Blocos Unitários de } S$
-    \li $B_P \Recebe \text{Blocos Unitários de } P$
-
-    \li \Para cada $blocoS \in B_S$ \Faca
-        \Do
-    \li     \Para cada $blocoP \in B_P$ \Faca
+    \begin{algorithm}
+        \caption{Heurística de combinação} \label{alg:combine}
+        \begin{codebox}
+        \Procname{$\proc{Combinação}(S, P)$}
+        \li $B_S \Recebe$ blocos unitários de $S$
+        \li $B_P \Recebe$ blocos unitários de $P$
+        \li \Para \Cada par de blocos consecutivos $(s_1, s_2) \in B_S$ \Faca
             \Do
-    \li         \Se $blocoS = blocoP$ \text{e bloco após} $B_S = $ \text{bloco após} $B_P$ \Do
-    \li             \Entao combine os blocos de $blocoS$ e $blocoP$
+        \li     \Para \Cada par de blocos consecutivos $(p_1, p_2) \in B_P$ \Faca
+                \Do
+        \li         \Se $s_1 = p_1$ e $s_2 = p_2$ \Entao
+                    \Do 
+        \li             combine $s_1$ e $s_2$
+        \li             combine $p_1$ e $p_2$
+                    \End
+                \End
             \End
-        \End
-    \end{codebox}
+        \end{codebox}
+    \end{algorithm}
 
     \subsubsection{Análise de singletons}
     
@@ -25,12 +31,12 @@
             Um caractere de uma string é dito \textbf{singleton} se é a única ocorrência daquele rótulo na string.
         \end{definition}
 
-         Vale notar que esse tipo de caractere tem valor especial na resolução do MCSP: uma substring que contém tal caractere em S não pode ter mais de uma substring equivalente em P. Com isso, é possível priorizar a combinação de blocos que contêm singletons e, com isso, melhorar a tomada de decisão do algoritmo e seus resultados.
+        Vale notar que esse tipo de caractere tem valor especial na resolução do MCSP: uma substring que contém tal caractere em $S$ não pode ter mais de uma substring equivalente em $P$. Com isso, é possível priorizar a combinação de blocos que contêm singletons e, com isso, melhorar a tomada de decisão do algoritmo e seus resultados.
 
 \subsection{Guloso}
 
-    Uma outra estratégia para encontrar soluções do MCSP é a gulosa. Tal algoritmo consiste em iterativamente escolher blocos grandes que coincidam entre as duas strings e marcá-los. Em cada iteração, escolhe-se a maior substring comum entre S e P que não coincida com blocos já marcados em nenhuma das strings. Os dois novos blocos correspondentes são então marcados. O algoritmo progride dessa forma até que todos os caracteres das strings pertençam a blocos marcados, formando então uma partição.
+    Uma outra estratégia para encontrar soluções do MCSP é a gulosa. Tal algoritmo consiste em iterativamente escolher blocos grandes que coincidam entre as duas strings e marcá-los. Em cada iteração, escolhe-se a maior substring comum entre $S$ e $P$ que não coincida com blocos já marcados em nenhuma das strings. Os dois novos blocos correspondentes são então marcados. O algoritmo progride dessa forma até que todos os caracteres das strings pertençam a blocos marcados, formando então uma partição.
 
     \subsubsection{Maior substring comum}
 
-        Descrever radix tree e algoritmo...
+        \todo[inline]{Descrever radix tree e algoritmo LCS}
