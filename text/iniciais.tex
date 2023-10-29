@@ -1,19 +1,22 @@
 
 \subsection{Combinação}
 
-    A heurística de combinação consiste em um algoritmo que inicia com uma solução trivial do problema (blocos de um caractere cada) e tenta agrupar blocos mantendo uma solução válida. A implementação escolhida consiste em analisar os blocos das strings da esquerda para a direita e agrupá-los sempre que possível, como mostra o [algoritmo ?]. A escolha genérica de quais blocos serão combinados, no entanto, compromete a qualidade da solução gerada.
+    A heurística de combinação consiste em um algoritmo que inicia com uma solução trivial do problema (blocos de um caractere cada) e tenta agrupar blocos mantendo uma solução válida. A implementação escolhida consiste em analisar os blocos das strings da esquerda para a direita e agrupá-los sempre que possível, como mostra o \cref{alg:combine}. A escolha genérica de quais blocos serão combinados, no entanto, compromete a qualidade da solução gerada.
 
     \begin{codebox}
-    \Procname{$\proc{Combinação}(S, P)$}
+    \Procname{$\proc{Combinação}(S, P)$}  \label{alg:combine}
 
     \li $B_S \Recebe \text{Blocos Unitários de } S$
     \li $B_P \Recebe \text{Blocos Unitários de } P$
 
-    \li \Para cada $blocoS in B_S$ \Faca \Do
-    \li     \Para cada $blocoP \in B_P$ \Faca \Do
-    \li         \Se $blocoS$ é igual a $blocoP$ e \text{Blocos seguintes em } $B_S$ e \text{Blocos seguintes em } $B_P$ \text{são iguais entre si} \Do
-    \li             \Entao Combine os blocos de $blocoS$ e $blocoP$
-    \End
+    \li \Para cada $blocoS \in B_S$ \Faca
+        \Do
+    \li     \Para cada $blocoP \in B_P$ \Faca
+            \Do
+    \li         \Se $blocoS = blocoP$ \text{e bloco após} $B_S = $ \text{bloco após} $B_P$ \Do
+    \li             \Entao combine os blocos de $blocoS$ e $blocoP$
+            \End
+        \End
     \end{codebox}
 
     \subsubsection{Análise de singletons}
