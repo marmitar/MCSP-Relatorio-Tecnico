@@ -4,19 +4,15 @@
     A heurística de combinação consiste em um algoritmo que inicia com uma solução trivial do problema (blocos de um caractere cada) e tenta agrupar blocos mantendo uma solução válida. A implementação escolhida consiste em analisar os blocos das strings da esquerda para a direita e agrupá-los sempre que possível, como mostra o [algoritmo ?]. A escolha genérica de quais blocos serão combinados, no entanto, compromete a qualidade da solução gerada.
 
     \begin{codebox}
-    \Procname{$\proc{Combina}(S, P)$}
-    \li \For $j \gets 2$ \To $\attrib{A}{length}$
-    \li \Do
-    $\id{key} \gets A[j]$
-    \li \Comment Insert $A[j]$ into the sorted sequence
-    $A[1 \twodots j-1]$.
-    \li $i \gets j-1$
-    \li \While $i > 0$ and $A[i] > \id{key}$
-    \li \Do
-    $A[i+1] \gets A[i]$
-    \li $i \gets i-1$
-    \End
-    \li $A[i+1] \gets \id{key}$
+    \Procname{$\proc{Combinação}(S, P)$}
+
+    \li $B_S \Recebe \text{Blocos Unitários de } S$
+    \li $B_P \Recebe \text{Blocos Unitários de } P$
+
+    \li \Para cada $blocoS in B_S$ \Faca \Do
+    \li     \Para cada $blocoP \in B_P$ \Faca \Do
+    \li         \Se $blocoS$ é igual a $blocoP$ e \text{Blocos seguintes em } $B_S$ e \text{Blocos seguintes em } $B_P$ \text{são iguais entre si} \Do
+    \li             \Entao Combine os blocos de $blocoS$ e $blocoP$
     \End
     \end{codebox}
 
