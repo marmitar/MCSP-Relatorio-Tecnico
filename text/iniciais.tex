@@ -1,0 +1,37 @@
+
+\subsection{Combinação}
+
+    A heurística de combinação consiste em um algoritmo que inicia com uma solução trivial do problema (blocos de um caractere cada) e tenta agrupar blocos mantendo uma solução válida. A implementação escolhida consiste em analisar os blocos das strings da esquerda para a direita e agrupá-los sempre que possível, como mostra o [algoritmo ?]. A escolha genérica de quais blocos serão combinados, no entanto, compromete a qualidade da solução gerada.
+
+    \begin{codebox}
+    \Procname{$\proc{Insertion-Sort}(A)$}
+    \li \For $j \gets 2$ \To $\attrib{A}{length}$
+    \li \Do
+    $\id{key} \gets A[j]$
+    \li \Comment Insert $A[j]$ into the sorted sequence
+    $A[1 \twodots j-1]$.
+    \li $i \gets j-1$
+    \li \While $i > 0$ and $A[i] > \id{key}$
+    \li \Do
+    $A[i+1] \gets A[i]$
+    \li $i \gets i-1$
+    \End
+    \li $A[i+1] \gets \id{key}$
+    \End
+    \end{codebox}
+
+    \subsubsection{Análise de singletons}
+    
+        \begin{definition}
+            Um caractere de uma string é dito \textbf{singleton} se é a única ocorrência daquele rótulo na string.
+        \end{definition}
+
+         Vale notar que esse tipo de caractere tem valor especial na resolução do MCSP: uma substring que contém tal caractere em S não pode ter mais de uma substring equivalente em P. Com isso, é possível priorizar a combinação de blocos que contêm singletons e, com isso, melhorar a tomada de decisão do algoritmo e seus resultados.
+
+\subsection{Guloso}
+
+    Uma outra estratégia para encontrar soluções do MCSP é a gulosa. Tal algoritmo consiste em iterativamente escolher blocos grandes que coincidam entre as duas strings e marcá-los. Em cada iteração, escolhe-se a maior substring comum entre S e P que não coincida com blocos já marcados em nenhuma das strings. Os dois novos blocos correspondentes são então marcados. O algoritmo progride dessa forma até que todos os caracteres das strings pertençam a blocos marcados, formando então uma partição.
+
+    \subsubsection{Maior substring comum}
+
+        Descrever radix tree e algoritmo...

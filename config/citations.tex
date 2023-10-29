@@ -1,0 +1,31 @@
+%% Hyperlinks
+\usepackage{nameref, xcolor, url}
+\usepackage{hyperref}
+\hypersetup{
+    pdftitle  = {TITULO},
+    pdfauthor = {Leonardo Rodrigues e Tiago de Paula},
+    % bookmarks   = true,
+    pdfpagemode = UseOutlines,
+    %% Cores de Links %%
+    colorlinks = true,
+    linkcolor  = blue!30!black,
+    urlcolor   = red!30!black,
+    citecolor  = blue
+}
+
+%% Outras configs
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+%% Referências
+\usepackage{csquotes}
+\usepackage{biblatex}
+\addbibresource{references.bib}
+
+%% hyperlink de tudo dentro do \cite
+\DeclareCiteCommand{\cite}
+  {}
+  {\usebibmacro{citeindex}\printtext[bibhyperref]{[\usebibmacro{prenote}\usebibmacro{cite}\usebibmacro{postnote}]}}
+  {\multicitedelim}
+  {}
