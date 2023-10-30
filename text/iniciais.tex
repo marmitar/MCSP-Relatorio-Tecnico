@@ -3,8 +3,6 @@
 
     A heurística de combinação consiste em um algoritmo que inicia com uma solução trivial do problema (blocos de um caractere cada) e tenta agrupar blocos mantendo uma solução válida. A implementação escolhida consiste em analisar os blocos das strings da esquerda para a direita e agrupá-los sempre que possível, como mostra o \cref{alg:combine}. A escolha genérica de quais blocos serão combinados, no entanto, compromete a qualidade da solução gerada.
 
-    \todo[inline]{Inserir pseudocódigo para cada heurística}
-
     \begin{algorithm}
         \caption{Heurística de combinação.} \label{alg:combine}
         \begin{codebox}
@@ -63,8 +61,12 @@
         \caption{Heurística gulosa.} \label{alg:greedy}
         \begin{codebox}
         \Procname{$\proc{Gulosa}(S, P)$}
-        \li $B_S \Recebe$ blocos unitários de $S$
-        \li $B_P \Recebe$ blocos unitários de $P$
+        \li $B_S \Recebe$ sequência com $S$ como único elemento
+        \li $B_P \Recebe$ sequência com $P$ como único elemento
+        \li \Enquanto existem caracteres pertencentes a blocos não marcados \Faca
+            \Do
+        \li     $x \Recebe$ maior substring comum a $B_S$ e $B_P$ aos blocos não marcados
+            \End
         \li \Para \Cada par de blocos $(b_1, b_2)$ consecutivos em $B_S$ e em $B_P$ \Faca
             \Do
         \li     $B_S \Recebe B_S$ com $b_1$ e $b_2$ combinados
