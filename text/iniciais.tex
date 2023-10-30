@@ -6,36 +6,73 @@
     \todo[inline]{Inserir pseudocódigo para cada heurística}
 
     \begin{algorithm}
-        \caption{Heurística de combinação} \label{alg:combine}
+        \caption{Heurística de combinação.} \label{alg:combine}
         \begin{codebox}
         \Procname{$\proc{Combinação}(S, P)$}
         \li $B_S \Recebe$ blocos unitários de $S$
         \li $B_P \Recebe$ blocos unitários de $P$
-        \li \Para \Cada par de blocos consecutivos $(s_1, s_2) \in B_S$ \Faca
+        \li \Para \Cada par de blocos $(b_1, b_2)$ consecutivos em $B_S$ e em $B_P$ \Faca
             \Do
-        \li     \Para \Cada par de blocos consecutivos $(p_1, p_2) \in B_P$ \Faca
-                \Do
-        \li         \Se $s_1 = p_1$ e $s_2 = p_2$ \Entao
-                    \Do 
-        \li             combine $s_1$ e $s_2$
-        \li             combine $p_1$ e $p_2$
-                    \End
-                \End
+        \li     $B_S \Recebe B_S$ com $b_1$ e $b_2$ combinados
+        \li     $B_P \Recebe B_P$ com $b_1$ e $b_2$ combinados
             \End
+        \li \Devolva $(B_S, B_P)$
         \end{codebox}
     \end{algorithm}
 
     \subsubsection{Análise de singletons}
     
-        \begin{definition}
-            Um caractere de uma string é dito \textbf{singleton} se é a única ocorrência daquele rótulo na string.
+        \begin{definition}[Singleton]
+            Um caractere de uma string é dito singleton se é a única ocorrência daquele rótulo na string.
         \end{definition}
 
-        Vale notar que esse tipo de caractere tem valor especial na resolução do MCSP: uma substring que contém tal caractere em $S$ não pode ter mais de uma substring equivalente em $P$. Com isso, é possível priorizar a combinação de blocos que contêm singletons e, com isso, melhorar a tomada de decisão do algoritmo e seus resultados.
+        Caracteres singletons têm valor especial na resolução do MCSP: uma substring que contém tal caractere em $S$ não pode ter mais de uma substring equivalente em $P$. Com isso, é possível priorizar a combinação de blocos que contêm singletons e, com isso, melhorar a tomada de decisão do algoritmo e seus resultados. O \cref{alg:combineS} mostra como adaptar o procedimento de combinação de blocos.
+
+        \begin{algorithm}
+        \caption{Heurística de combinação com análise de singletons.} \label{alg:combineS}
+        \begin{codebox}
+        \Procname{$\proc{CombinaçãoComSingletons}(S, P)$}
+        \li $B_S \Recebe$ blocos unitários de $S$
+        \li $B_P \Recebe$ blocos unitários de $P$
+        \li \Para \Cada par de blocos $(b_1, b_2)$ consecutivos em $B_S$ e em $B_P$
+        \zi tal que $b_1$ e $b_2$ possuam singletons \Faca
+            \Do
+        \li     $B_S \Recebe B_S$ com $b_1$ e $b_2$ combinados
+        \li     $B_P \Recebe B_P$ com $b_1$ e $b_2$ combinados
+            \End
+        \li \Para \Cada par de blocos $(b_1, b_2)$ consecutivos em $B_S$ e em $B_P$
+        \zi tal que $b_1$ ou $b_2$ possuam singletons \Faca
+            \Do
+        \li     $B_S \Recebe B_S$ com $b_1$ e $b_2$ combinados
+        \li     $B_P \Recebe B_P$ com $b_1$ e $b_2$ combinados
+            \End
+        \li \Para \Cada par de blocos $(b_1, b_2)$ consecutivos em $B_S$ e em $B_P$ \Faca
+            \Do
+        \li     $B_S \Recebe B_S$ com $b_1$ e $b_2$ combinados
+        \li     $B_P \Recebe B_P$ com $b_1$ e $b_2$ combinados
+            \End
+        \li \Devolva $(B_S, B_P)$
+        \end{codebox}
+    \end{algorithm}
 
 \subsection{Guloso}
 
     Uma outra estratégia para encontrar soluções do MCSP é a gulosa. Tal algoritmo consiste em iterativamente escolher blocos grandes que coincidam entre as duas strings e marcá-los. Em cada iteração, escolhe-se a maior substring comum entre $S$ e $P$ que não coincida com blocos já marcados em nenhuma das strings. Os dois novos blocos correspondentes são então marcados. O algoritmo progride dessa forma até que todos os caracteres das strings pertençam a blocos marcados, formando então uma partição.
+
+    \begin{algorithm}
+        \caption{Heurística gulosa.} \label{alg:greedy}
+        \begin{codebox}
+        \Procname{$\proc{Gulosa}(S, P)$}
+        \li $B_S \Recebe$ blocos unitários de $S$
+        \li $B_P \Recebe$ blocos unitários de $P$
+        \li \Para \Cada par de blocos $(b_1, b_2)$ consecutivos em $B_S$ e em $B_P$ \Faca
+            \Do
+        \li     $B_S \Recebe B_S$ com $b_1$ e $b_2$ combinados
+        \li     $B_P \Recebe B_P$ com $b_1$ e $b_2$ combinados
+            \End
+        \li \Devolva $(B_S, B_P)$
+        \end{codebox}
+    \end{algorithm}
 
     \subsubsection{Maior substring comum}
 
