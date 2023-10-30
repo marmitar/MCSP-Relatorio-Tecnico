@@ -1,15 +1,15 @@
-Diversos problemas de comparar strings, encontrando o menor número de operações necessárias para formar uma string a partir de outra, têm diversas aplicações em biologia computacional, em processamento de texto e em compressão de arquivos \cite{goldstein_minimum_2005}. O problema da partição comum mínima de strings (MCSP) se encaixa nessa classe de problemas, especificamente para o caso em que a única operação disponível é a reordenação de substrings. 
+Diversos problemas de comparar strings, encontrando o menor número de operações necessárias para formar uma string a partir de outra, têm diversas aplicações em biologia computacional, em processamento de texto e em compressão de arquivos \cite{goldstein_minimum_2005}. O problema da partição comum mínima de strings (MCSP) se encaixa nessa classe de problemas, especificamente para o caso em que a única operação disponível é a reordenação de substrings.
 
 \begin{definition}[Strings Balanceadas]
-    Duas strings $S$ e $P$ são ditas balanceadas se o número de ocorrências dos caracteres de $S$ for igual ao dos caracteres de $P$.
+    Duas strings $A$ e $B$ são ditas \textbf{balanceadas} se o número de ocorrências dos caracteres de $A$ for igual ao dos caracteres de $B$.
 \end{definition}
 
 \begin{definition}[Partição]
-    Uma sequência de strings $\S$ é dita uma partição de uma string $S$ se a concatenação dos elementos de $\S$ for igual a $S$. Chamamos as strings de $\S$ de blocos.
+    Uma sequência de strings $\part{P}$ é dita uma partição de uma string $A$ se a concatenação dos elementos de $\part{P}$ for igual a $A$. Chamamos as substrings de $A$ em $\part{P}$ de \textit{blocos}.
 \end{definition}
 
-\begin{definition}[Partição comum]
-    O par de sequências de strings $\left\langle \S, \P \right\rangle$ é chamado de partição comum de duas strings balanceadas $S$ e $P$ se $\P$ é uma permutação de $\S$ \cite{goldstein_minimum_2005}.
+\begin{definition}[Partição Comum]
+    Para uma partição $\part{P}$ de $A$ e outra partição $\part{Q}$ de $B$, o par $\left(\part{P}, \part{Q}\right)$ é chamado de \textbf{partição comum} de $A$ e $B$ se $\part{P}$ é uma permutação de $\part{Q}$ \cite{goldstein_minimum_2005}.
 \end{definition}
 
 % \begin{enumerate}[
@@ -19,7 +19,7 @@ Diversos problemas de comparar strings, encontrando o menor número de operaçõ
 %     itemsep = 0.2em,
 %     topsep = 0pt
 % ]
-%     \item $\abs{\S} = \abs{\P}$; 
+%     \item $\abs{\S} = \abs{\P}$;
 %     \label[definition]{prop1}
 
 %     \item $S$ é o resultado da concatenação dos elementos de $\S$;
@@ -31,4 +31,4 @@ Diversos problemas de comparar strings, encontrando o menor número de operaçõ
 
 O MCSP consiste em encontrar uma partição comum de tamanho mínimo (i.e. com o menor número de blocos) para duas strings balanceadas.
 
-Ao abordar o problema pela primeira vez, alguém poderia considerar uma solução direta: testar, para todas as possíveis configurações de separação em blocos de S, se é possível formar P a partir de uma permutação e, com isso, escolher as soluções de menor tamanho. É fácil notar, no entanto, que tal algoritmo não é polinomial, de forma que é inviável para obter uma solução do problema, mesmo com instâncias de menos de 50 caracteres. De fato, provou-se que o MCSP é um problema NP-Difícil, exceto para o caso em que cada caractere ocorre apenas uma vez em cada string \cite{goldstein_minimum_2005}. Sendo assim, heurísticas são ótimos instrumentos para encontrar soluções boas para instâncias do problema.
+Ao abordar o problema pela primeira vez, alguém poderia considerar uma solução direta: testar, para todas as possíveis configurações de separação em blocos de $A$, se é possível formar $B$ a partir de uma permutação e, com isso, escolher as soluções de menor tamanho. É fácil notar, no entanto, que tal algoritmo não é polinomial, de forma que é inviável para obter uma solução do problema, mesmo com instâncias de menos de 50 caracteres. De fato, provou-se que o MCSP é um problema NP-Difícil, exceto para o caso em que cada caractere ocorre apenas uma vez em cada string \cite{goldstein_minimum_2005}. Sendo assim, heurísticas são ótimos instrumentos para encontrar soluções boas para instâncias do problema.
