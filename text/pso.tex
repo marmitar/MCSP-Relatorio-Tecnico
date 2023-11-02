@@ -1,3 +1,39 @@
-Utilizando a representação por grafo desenvolvida, optamos por implementar o \textit{Particle Swarm Optimization} (PSO). Esse algoritmos baseia-se no comportamento de enxames e bandos de aves -- mas também de cardumes ou até grupos humanos -- durante uma busca \cite[p.~7]{yang_nature-inspired_2010}. Cada agente busca localmente em seus arredores por posições de qualidade, participando também da comunicação do grupo para que todos saibam qual é a melhor encontrada até o momento. O PSO ganhou popularidade nas últimas duas décadas devido ao agradável balanço que proporciona entre a eficiência da busca por soluções e a facilidade de implementação e de adaptação ao problema em que é aplicado \cite[p.~640]{marti_handbook_2018}.
+Utilizando a representação por grafo desenvolvida, optamos por implementar o \textit{Particle Swarm Optimization} (PSO). Esse algoritmo foi descoberto durante simulações de modelos sociais de animais \todo{citar kennedy ebberhart 1995 aqui} e baseia-se no comportamento de enxames e bandos de aves -- mas também de cardumes ou até grupos humanos -- durante uma busca \cite[p.~7]{yang_nature-inspired_2010}. Cada agente busca localmente em seus arredores por posições de qualidade, participando também da comunicação do grupo para que todos saibam qual é a melhor encontrada até o momento. O PSO ganhou popularidade nas últimas duas décadas devido ao agradável balanço que proporciona entre a eficiência da busca por soluções e a facilidade de implementação e de adaptação ao problema em que é aplicado \cite[p.~640]{marti_handbook_2018}.
 
-De forma mais prática, o algoritmo consiste em um conjunto de partículas em que cada uma possui uma posição atual e mantém gravada a melhor posição que encontrou até o momento. O enxame, que contém as partículas, também mantém a melhor posição global encontrada. A cada iteração, a posição de uma partícula é atualizada tradicionalmente utilizando 3 componentes: um aleatório, um em direção à sua melhor posição e um em direção à melhor posição global \cite[p.~642]{marti_handbook_2018}.
+De forma mais prática, o algoritmo consiste em um conjunto de partículas em que cada uma possui uma posição atual e mantém gravada a melhor posição que encontrou até o momento. O enxame, que contém as partículas, também mantém a melhor posição global encontrada. A cada iteração, a posição de uma partícula é atualizada de acordo com as componentes escolhidas, como explica a \Cref{sec:movimento}.
+
+Para aplicar ao contexto do MCSP, iniciamos o algoritmo construindo a representação por grafo da instância e obtendo o vetor de arestas. Posições iniciais para a quantidade de partículas desejadas são geradas, conforme explica a \Cref{sec:posicoes}. Para medir a qualidade da solução referente a uma partícula, utilizamos a posição como vetor de pesos para obter uma ordenação das arestas do grafo. Essa ordenação é analisada para avaliar quantos blocos existe naquela solução, sem necessariamente gerar as partições correspondentes, já que isso apenas aumentaria o tempo de execução. Finalmente calculamos a função objetivo, a ser maximizada, dada pela diferença entre o número de caracteres de uma string e o número de blocos de uma partição.
+
+\subsection{Posições iniciais} \label{sec:posicoes}
+
+    Foram implementadas diferentes formas de gerar posições iniciais para as partículas visando diversificar o enxame, cobrindo ao máximo o espaço de busca, mas também incluindo soluções boas como ponto de partida para algumas partículas. As componentes das posições, apesar de não serem limitadas durante a execução, são inicializadas entre $-1$ e $1$.
+
+    Uma das formas de incluir boas soluções é utilizar uma partição comum resultante da aplicação de outra heurística para gerar um vetor de pesos correspondente. Isso é feito verificando quais arestas do grafo são compatíveis com a partição comum dada, i.e. quais arestas têm seu bloco naquela partição. Feito isso, geramos um peso para cada aresta compatível no intervalo $[-1,0)$ e para cada não compatível no intervalo $[0, 1]$, de forma que, ao serem ordenadas por esses pesos, a mesma partição inicial pode ser construída. Os pesos são gerados aleatoriamente no intervalo dado, permitindo a geração de diversas posições inciais a partir da mesma partição comum.
+
+    Outra forma de propiciar posições inciais de qualidade é incluindo ordenações do vetor de arestas por tamanho do bloco, obtendo partições comuns similares à heurística gulosa. Para isso, são gerados pesos aleatórios em $[-1,1]$ e arranjados de forma a priorizar as arestas com maiores blocos.
+
+    Por fim, a geração totalmente aleatória dos pesos uniformemente em $[-1,1]$, apesar de ingênua, gerou bons resultados por si só e também mostrou-se útil quando combinada às outras formas de construção de posições iniciais.
+
+    De forma geral, consolidamos a criação das posições iniciais do enxame utilizando as formas descritas. Para cada partícula, uma das formas a seguir é escolhida com probabilidade proporcional a um peso designado a ela:
+
+    \begin{enumerate}[
+        label = {\alph*)},
+        ref = \thedefinition.\alph*,
+        parsep = 0pt,
+        itemsep = 0.2em,
+        topsep = 0pt
+    ]
+        \item A partir do resultado da heurística gulosa
+        \item A partir do resultado da heurística de combinação com análise de singletons
+        \item A partir da ordenação das arestas por tamanho do bloco
+        \item Totalmente aleatória
+    \end{enumerate}
+
+\subsection{Movimento das partículas} \label{sec:movimento}
+
+    Antes de cada iteração do algoritmo, as partículas devem se movimentar pelo espaço de busca para buscar melhores soluções. Esse movimento pode ser composto por diferentes componentes. Originalmente, utilizava-se duas componentes: uma em direção à melhor solução encontrada pela própria partícula (melhor individual) e outra em direção à melhor solução encontrada pela vizinhança da partícula. A vizinhança pode ser definida de diversas maneiras, como por distância ou como apenas uma vizinhança global \todo{Citar bratton kennedy 2007 aqui}.
+
+    Experimentos posteriores com o PSO consideraram diferentes componentes para atualização das posições, como a implementação de um sistema de inércia e um limite máximo para a velocidade da partícula \todo{citar shi eberhart 1998 aqui}.
+
+    Nossa implementação do algoritmo aqui apresentada para o MCSP utiliza uma combinação das componentes originais, com uma vizinhança global, e um comportamento estocástico \cite[p.~642]{marti_handbook_2018}. Para a componente em direção ao melhor individual, define-se estaticamente uma fração máxima $k_{i, \text{max}}$ da distância $d_i$ que pode ser percorrida entre a partícula e a melhor posição individual e, a cada atualização, escolhe-se um valor aleatoriamente em $[0, d_i \cdot k_{i, \text{max}}]$ para a magnitude do deslocamento. De forma semelhante, é definida uma fração máxima $k_{g, \text{max}}$ da distância $d_g$ até a melhor posição global e escolhe-se aleatoriamente um valor em $[0, d_g \cdot k_{g, \text{max}}]$. Para adicionar um componente estocástico, escolhe-se uma constante $k_e$ e cria-se um vetor de valores aleatórios em $[-k_e, k_e]$ para ser utilizado como deslocamento.
+    

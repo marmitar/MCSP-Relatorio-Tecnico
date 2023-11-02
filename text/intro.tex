@@ -1,7 +1,7 @@
-Diversos problemas de comparar strings, encontrando o menor número de operações necessárias para formar uma string a partir de outra, têm diversas aplicações em biologia computacional, em processamento de texto e em compressão de arquivos \cite{goldstein_minimum_2005}. O problema da partição comum mínima de strings (MCSP) se encaixa nessa classe de problemas, especificamente para o caso em que a única operação disponível é a reordenação de substrings.
+Diversos problemas de comparação de strings, que encontram o menor número de operações necessárias para formar uma string a partir de outra, têm diversas aplicações em biologia computacional, em processamento de texto e em compressão de arquivos \cite{goldstein_minimum_2005}. O problema da partição comum mínima de strings (MCSP) se encaixa nessa classe de problemas, especificamente para o caso em que a única operação disponível é a reordenação de substrings.
 
 \begin{definition}[Strings Balanceadas]
-    Duas strings $A$ e $B$ são ditas \textbf{balanceadas} se o número de ocorrências dos caracteres de $A$ for igual ao dos caracteres de $B$.
+    Duas strings $A$ e $B$ são ditas balanceadas se o número de ocorrências dos caracteres de $A$ for igual ao dos caracteres de $B$.
 \end{definition}
 
 \begin{definition}[Partição]
@@ -11,23 +11,6 @@ Diversos problemas de comparar strings, encontrando o menor número de operaçõ
 \begin{definition}[Partição Comum]
     Para uma partição $\part{P}$ de $A$ e outra partição $\part{Q}$ de $B$, o par $\left(\part{P}, \part{Q}\right)$ é chamado de \textbf{partição comum} de $A$ e $B$ se $\part{P}$ é uma permutação de $\part{Q}$ \cite{goldstein_minimum_2005}.
 \end{definition}
-
-% \begin{enumerate}[
-%     label = {\alph*)},
-%     ref = \thedefinition.\alph*,
-%     parsep = 0pt,
-%     itemsep = 0.2em,
-%     topsep = 0pt
-% ]
-%     \item $\abs{\S} = \abs{\P}$;
-%     \label[definition]{prop1}
-
-%     \item $S$ é o resultado da concatenação dos elementos de $\S$;
-
-%     \item $P$ é o resultado da concatenação dos elementos de $\P$;
-
-%     \item $\S$ é uma permutação dos elementos de $\P$.
-% \end{enumerate}
 
 O MCSP consiste em encontrar uma partição comum de tamanho mínimo (i.e. com o menor número de blocos) para duas strings balanceadas.
 

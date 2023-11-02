@@ -1,80 +1,77 @@
+Como uma primeira abordagem para a resolução do MCSP, utilizaremos heurísticas diretas e determinísticas, que utilizam alguma característica do problema para tentar encontrar soluções com boa qualidade. 
 
 \subsection{Combinação}
 
-    A heurística de combinação consiste em um algoritmo que inicia com uma solução trivial do problema (blocos de um caractere cada) e tenta agrupar blocos mantendo uma solução válida. A implementação escolhida consiste em analisar os blocos das strings da esquerda para a direita e agrupá-los sempre que possível, como mostra o \cref{alg:combine}. A escolha genérica de quais blocos serão combinados, no entanto, compromete a qualidade da solução gerada.
+    A heurística de combinação consiste em um algoritmo que inicia com uma solução trivial do problema (blocos de um caractere cada) e tenta agrupar blocos mantendo uma solução válida. A implementação escolhida consiste em analisar os blocos das strings da esquerda para a direita e agrupá-los sempre que possível, como mostra o \Cref{alg:combine}. A escolha arbitrária de quais blocos serão combinados, no entanto, compromete a qualidade da solução gerada.
 
-    \begin{algorithm}
+    \begin{algorithm}[htb]
         \caption{Heurística de combinação.} \label{alg:combine}
         \begin{codebox}
-        \Procname{$\proc{Combinação}(S, P)$}
-        \li $B_S \Recebe$ blocos unitários de $S$
-        \li $B_P \Recebe$ blocos unitários de $P$
-        \li \Para \Cada par de blocos $(b_1, b_2)$ consecutivos em $B_S$ e em $B_P$ \Faca
+        \Procname{$\proc{Combinação}(A, B)$}
+        \li $B_A \Recebe$ blocos unitários de $A$
+        \li $B_B \Recebe$ blocos unitários de $B$
+        \li \Para \Cada par de blocos $(b_1, b_2)$ consecutivos em $B_A$ e em $B_B$ \Faca
             \Do
-        \li     $B_S \Recebe B_S$ com $b_1$ e $b_2$ combinados
-        \li     $B_P \Recebe B_P$ com $b_1$ e $b_2$ combinados
+        \li     $B_A \Recebe B_A$ com $b_1$ e $b_2$ combinados
+        \li     $B_B \Recebe B_B$ com $b_1$ e $b_2$ combinados
             \End
-        \li \Devolva $(B_S, B_P)$
+        \li \Devolva $(B_A, B_B)$
         \end{codebox}
     \end{algorithm}
 
     \subsubsection{Análise de singletons}
     
         \begin{definition}[Singleton]
-            Um caractere de uma string é dito singleton se é a única ocorrência daquele rótulo na string.
+            Um caractere de uma string é dito singleton se é a única ocorrência daquele  rótulo na string.
         \end{definition}
+        \todo[inline]{definir rótulo}
 
-        Caracteres singletons têm valor especial na resolução do MCSP: uma substring que contém tal caractere em $S$ não pode ter mais de uma substring equivalente em $P$. Com isso, é possível priorizar a combinação de blocos que contêm singletons e, com isso, melhorar a tomada de decisão do algoritmo e seus resultados. O \cref{alg:combineS} mostra como adaptar o procedimento de combinação de blocos.
+        Caracteres singletons têm valor especial na resolução do MCSP: uma substring que contém tal caractere em $A$ não pode ter mais de uma substring equivalente em $B$. Com isso, é possível priorizar a combinação de blocos que contêm singletons e, com isso, melhorar a tomada de decisão do algoritmo e seus resultados. O \Cref{alg:combineS} mostra como adaptar o procedimento de combinação de blocos.
 
-        \begin{algorithm}
+        \begin{algorithm}[htb]
         \caption{Heurística de combinação com análise de singletons.} \label{alg:combineS}
         \begin{codebox}
-        \Procname{$\proc{CombinaçãoComSingletons}(S, P)$}
-        \li $B_S \Recebe$ blocos unitários de $S$
-        \li $B_P \Recebe$ blocos unitários de $P$
-        \li \Para \Cada par de blocos $(b_1, b_2)$ consecutivos em $B_S$ e em $B_P$
+        \Procname{$\proc{CombinaçãoComSingletons}(A, B)$}
+        \li $B_A \Recebe$ blocos unitários de $A$
+        \li $B_B \Recebe$ blocos unitários de $B$
+        \li \Para \Cada par de blocos $(b_1, b_2)$ consecutivos em $B_A$ e em $B_B$
         \zi tal que $b_1$ e $b_2$ possuam singletons \Faca
             \Do
-        \li     $B_S \Recebe B_S$ com $b_1$ e $b_2$ combinados
-        \li     $B_P \Recebe B_P$ com $b_1$ e $b_2$ combinados
+        \li     $B_A \Recebe B_A$ com $b_1$ e $b_2$ combinados
+        \li     $B_B \Recebe B_B$ com $b_1$ e $b_2$ combinados
             \End
-        \li \Para \Cada par de blocos $(b_1, b_2)$ consecutivos em $B_S$ e em $B_P$
+        \li \Para \Cada par de blocos $(b_1, b_2)$ consecutivos em $B_A$ e em $B_B$
         \zi tal que $b_1$ ou $b_2$ possuam singletons \Faca
             \Do
-        \li     $B_S \Recebe B_S$ com $b_1$ e $b_2$ combinados
-        \li     $B_P \Recebe B_P$ com $b_1$ e $b_2$ combinados
+        \li     $B_A \Recebe B_A$ com $b_1$ e $b_2$ combinados
+        \li     $B_B \Recebe B_B$ com $b_1$ e $b_2$ combinados
             \End
-        \li \Para \Cada par de blocos $(b_1, b_2)$ consecutivos em $B_S$ e em $B_P$ \Faca
+        \li \Para \Cada par de blocos $(b_1, b_2)$ consecutivos em $B_A$ e em $B_B$ \Faca
             \Do
-        \li     $B_S \Recebe B_S$ com $b_1$ e $b_2$ combinados
-        \li     $B_P \Recebe B_P$ com $b_1$ e $b_2$ combinados
+        \li     $B_A \Recebe B_A$ com $b_1$ e $b_2$ combinados
+        \li     $B_B \Recebe B_B$ com $b_1$ e $b_2$ combinados
             \End
-        \li \Devolva $(B_S, B_P)$
+        \li \Devolva $(B_A, B_B)$
         \end{codebox}
     \end{algorithm}
 
-\subsection{Guloso}
+\subsection{Gulosa}
 
-    Uma outra estratégia para encontrar soluções do MCSP é a gulosa. Tal algoritmo consiste em iterativamente escolher blocos grandes que coincidam entre as duas strings e marcá-los. Em cada iteração, escolhe-se a maior substring comum entre $S$ e $P$ que não coincida com blocos já marcados em nenhuma das strings. Os dois novos blocos correspondentes são então marcados. O algoritmo progride dessa forma até que todos os caracteres das strings pertençam a blocos marcados, formando então uma partição.
+    Uma outra estratégia para encontrar soluções do MCSP é a gulosa. Tal algoritmo consiste em iterativamente escolher blocos grandes que coincidam entre as duas strings e marcá-los. Em cada iteração, escolhe-se a maior substring comum entre $S$ e $P$ que não coincida com blocos já marcados em nenhuma das strings. Os dois novos blocos correspondentes são então marcados. O algoritmo progride dessa forma até que todos os caracteres das strings pertençam a blocos marcados, formando então uma partição comum.
 
-    \begin{algorithm}
+    \begin{algorithm}[htb]
         \caption{Heurística gulosa.} \label{alg:greedy}
         \begin{codebox}
-        \Procname{$\proc{Gulosa}(S, P)$}
-        \li $B_S \Recebe$ sequência com $S$ como único elemento
-        \li $B_P \Recebe$ sequência com $P$ como único elemento
+        \Procname{$\proc{Gulosa}(A, B)$}
+        \li $B_A \Recebe$ sequência com $A$ como único elemento
+        \li $B_B \Recebe$ sequência com $B$ como único elemento
         \li \Enquanto existem caracteres pertencentes a blocos não marcados \Faca
             \Do
-        \li     $x \Recebe$ maior substring comum a $B_S$ e $B_P$ nos blocos não marcados
-        \li     quebre um bloco de $B_S$ que contém $x$ e marque o bloco de $x$
-        \li     quebre um bloco de $B_P$ que contém $x$ e marque o bloco de $x$
+        \li     $x \Recebe$ maior substring comum a $B_A$ e $B_B$ nos blocos não marcados
+        \li     quebre um bloco de $B_A$ que contém $x$ criando um novo bloco marcado com apenas $x$
+        \li     quebre um bloco de $B_B$ que contém $x$ criando um novo bloco marcado com apenas $x$
             \End
-        \li \Para \Cada par de blocos $(b_1, b_2)$ consecutivos em $B_S$ e em $B_P$ \Faca
-            \Do
-        \li     $B_S \Recebe B_S$ com $b_1$ e $b_2$ combinados
-        \li     $B_P \Recebe B_P$ com $b_1$ e $b_2$ combinados
-            \End
-        \li \Devolva $(B_S, B_P)$
+        \li \Devolva $(B_A, B_B)$
         \end{codebox}
     \end{algorithm}
 
