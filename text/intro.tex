@@ -1,21 +1,23 @@
 Diversos problemas de comparação de strings, que encontram o menor número de operações necessárias para formar uma string a partir de outra, têm diversas aplicações em biologia computacional, em processamento de texto e em compressão de arquivos \cite{goldstein_minimum_2005}. O problema da partição comum mínima de strings (MCSP) se encaixa nessa classe de problemas, especificamente para o caso em que a única operação disponível é a reordenação de substrings.
 
-\subsection{Definições}
+Seja uma string $A$, com $\abs{A}$ caracteres. Denotamos por $A_i$ o i-ésimo caractere de $A$. O conjunto de caracteres distintos de $A$ é chamado de \textit{alfabeto} de $A$. Utilizamos o termo \textit{rótulo} para se referir aos elementos do alfabeto e o termo caractere para se referir aos elementos da string \cite[p.~17]{siqueira_heuristicas_2022}.
 
-    Seja uma string $A$, com $\abs{A}$ caracteres. Denotamos por $A_i$ o i-ésimo caractere de $A$. O conjunto de caracteres distintos de $A$ é chamado de alfabeto de $A$ e 
-    
-    \begin{definition}[Strings Balanceadas]
-        Duas strings $A$ e $B$ são ditas balanceadas se o número de ocorrências dos caracteres de $A$ for igual ao dos caracteres de $B$.
-    \end{definition}
-    
-    \begin{definition}[Partição]
-        Uma sequência de strings $\part{P}$ é dita uma partição de uma string $A$ se a concatenação dos elementos de $\part{P}$ for igual a $A$. Chamamos as substrings de $A$ em $\part{P}$ de \textit{blocos}.
-    \end{definition}
-    
-    \begin{definition}[Partição Comum]
-        Para uma partição $\part{P}$ de $A$ e outra partição $\part{Q}$ de $B$, o par $\left(\part{P}, \part{Q}\right)$ é chamado de \textbf{partição comum} de $A$ e $B$ se $\part{P}$ é uma permutação de $\part{Q}$ \cite{goldstein_minimum_2005}.
-    \end{definition}
+\begin{definition}[Ocorrência]
+    A ocorrência de um rótulo $\alpha$ em uma string $A$ é dado pelo número de cópias de $\alpha$ presentes em $A$.
+\end{definition}
 
-O MCSP consiste em encontrar uma partição comum de tamanho mínimo (i.e. com o menor número de blocos) para duas strings balanceadas.
+\begin{definition}[Strings Balanceadas]
+    Duas strings são ditas balanceadas se possuem o mesmo alfabeto e a ocorrência de todos os caracteres é igual nas duas strings.
+\end{definition}
+
+\begin{definition}[Partição]
+    Uma sequência de strings $\part{P}$ é dita uma partição de uma string $A$ se a concatenação dos elementos de $\part{P}$ for igual a $A$. Chamamos as substrings de $A$ em $\part{P}$ de \textit{blocos}. O tamanho de $\part{P}$ é dado pelo seu número de blocos e denotado por $\abs{\part{P}}$.
+\end{definition}
+
+\begin{definition}[Partição Comum]
+    Para uma partição $\part{P}$ de $A$ e outra partição $\part{Q}$ de $B$, o par $\left(\part{P}, \part{Q}\right)$ é chamado de \textbf{partição comum} de $A$ e $B$ se $\part{P}$ é uma permutação de $\part{Q}$ \cite{goldstein_minimum_2005}. O tamanho de uma partição comum $\left(\part{P}, \part{Q}\right)$ é dado por $\abs{\part{P}} = \abs{\part{Q}}$.
+\end{definition}
+
+O \textbf{MCSP} consiste em encontrar uma partição comum de tamanho mínimo (i.e. com o menor número de blocos) para duas strings balanceadas.
 
 Ao abordar o problema pela primeira vez, alguém poderia considerar uma solução direta: testar, para todas as possíveis configurações de separação em blocos de $A$, se é possível formar $B$ a partir de uma permutação e, com isso, escolher as soluções de menor tamanho. É fácil notar, no entanto, que tal algoritmo não é polinomial, de forma que é inviável para obter uma solução do problema, mesmo com instâncias de menos de 50 caracteres. De fato, provou-se que o MCSP é um problema NP-Difícil, exceto para o caso em que cada caractere ocorre apenas uma vez em cada string \cite{goldstein_minimum_2005}. Sendo assim, heurísticas são ótimos instrumentos para encontrar soluções boas para instâncias do problema.

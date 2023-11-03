@@ -21,14 +21,9 @@ Como uma primeira abordagem para a resolução do MCSP, utilizaremos heurística
 
     \subsubsection{Análise de singletons}
 
-        \begin{definition}[Rótulo]
-            Um caractere de uma string é dito singleton se é a única ocorrência daquele rótulo na string.
-        \end{definition}
-
         \begin{definition}[Singleton]
-            Um caractere de uma string é dito singleton se é a única ocorrência daquele rótulo na string.
+            Um caractere de uma string é dito singleton se a ocorrência de seu rótulo na string é 1.
         \end{definition}
-        \todo[inline]{definir rótulo}
 
         Caracteres singletons têm valor especial na resolução do MCSP: uma substring que contém tal caractere em $A$ não pode ter mais de uma substring equivalente em $B$. Com isso, é possível priorizar a combinação de blocos que contêm singletons e, com isso, melhorar a tomada de decisão do algoritmo e seus resultados. O \Cref{alg:combineS} mostra como adaptar o procedimento de combinação de blocos.
 
