@@ -15,6 +15,13 @@
 \usepackage{anyfontsize}
 \usepackage{template/techrep-PFG-ic}
 
+\usepackage[section]{placeins}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{siunitx}
+
 %% Outras configs
 \input{config/citations}
 \input{config/symbols}
@@ -95,8 +102,12 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \begin{abstract}
-        Resumo bem feito sobre o PFG. Resumo bem feito sobre o PFG. Resumo bem feito sobre o PFG. Resumo bem feito sobre o PFG. Resumo bem feito sobre o PFG. Resumo bem feito sobre o PFG.
+        Boas heurísticas têm grande valor para o problema da partição comum mínima de strings (MCSP), já que ele foi provado ser NP-Difícil. Além de apresentar implementações para heurísticas conhecidas da literatura, desenvolvemos uma representação por grafo eficiente para instâncias do MCSP, reduzindo-o a um problema de permutação e permitindo a aplicação de algoritmos de otimização para buscar soluções. O \textit{Particle Swarm Optimization} (PSO) foi adaptado para esta representação e foi capaz de não só melhorar significativamente o resultado das outras heurísticas utilizadas, mas também encontrar boas soluções de forma independente, mostrando-se uma meta-heurística promissora, principalmente para instâncias com poucas repetições de caracteres. Esse trabalho sugere a utilização da representação por grafo com outros métodos de otimização para o MCSP.
     \end{abstract}
+
+    \todo[inline]{Evitar quebra de página no meio de definições}
+
+    \todo[inline]{Polir esteticamente figuras, tabelas, gráficos}
 
     \section{Introdução}
 
@@ -114,13 +125,14 @@
 
         \input{text/pso}
 
-    \section{Resultados}
+    \section{Resultados e discussão}
 
         \input{text/resultados}
 
-    \section{Discussão}
+    \section{Conclusão}
 
-    \newpage
+        \input{text/conclusao}
+
     \printbibliography
 
 \end{document}
