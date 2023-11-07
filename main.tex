@@ -21,6 +21,7 @@
 \usepackage{enumitem}
 \usepackage{booktabs}
 \usepackage{siunitx}
+\usepackage{import}
 
 %% Outras configs
 \input{config/citations}
@@ -103,22 +104,22 @@
     \todo[inline]{Polir esteticamente figuras, tabelas, gráficos}
 
     \section{Introdução}
-        \input{text/intro}
+        \import{text}{intro}
 
     \section{Heurísticas iniciais}
-        \input{text/iniciais}
+        \import{text}{iniciais}
 
     \section{Representação por grafo}
-        \input{text/grafo}
+        \import{text}{grafo}
 
     \section{Particle swarm optimization}
-        \input{text/pso}
+        \import{text}{pso}
 
     \section{Resultados e discussão}
-        \input{text/resultados}
+        \import{text}{resultados}
 
     \section{Conclusão}
-        \input{text/conclusao}
+        \import{text}{conclusao}
 
     \printbibliography
 
