@@ -12,7 +12,7 @@ Para aplicar ao contexto do MCSP, iniciamos o algoritmo construindo a representa
 
     Outra forma de propiciar posições inciais de qualidade é incluindo ordenações do vetor de arestas por tamanho do bloco, obtendo partições comuns similares à heurística gulosa. Para isso, são gerados pesos aleatórios em $[-1,1]$ e arranjados de forma a priorizar as arestas com maiores blocos.
 
-    Por fim, a geração totalmente aleatória dos pesos uniformemente em $[-1,1]$, apesar de ingênua, gerou bons resultados por si só e também mostrou-se útil quando combinada às outras formas de construção de posições iniciais. De forma geral, consolidamos a criação das posições iniciais do enxame utilizando os procedimentos descritos: 
+    Por fim, a geração totalmente aleatória dos pesos uniformemente em $[-1,1]$, apesar de ingênua, gerou bons resultados por si só e também mostrou-se útil quando combinada às outras formas de construção de posições iniciais. De forma geral, consolidamos a criação das posições iniciais do enxame utilizando os procedimentos descritos:
 
     \begin{enumerate}[
         label = {\alph*)},
@@ -35,4 +35,3 @@ Para aplicar ao contexto do MCSP, iniciamos o algoritmo construindo a representa
     Experimentos posteriores com o PSO consideraram diferentes componentes para atualização das posições, como a implementação de um sistema de inércia e um limite máximo para a velocidade da partícula \cite{shi_parameter_1998}.
 
     Nossa implementação do algoritmo aqui apresentada para o MCSP utiliza uma combinação das componentes originais, com uma vizinhança global, e um comportamento estocástico \cite[p.~642]{marti_handbook_2018}. Para a componente em direção ao melhor individual, define-se estaticamente uma fração máxima $k_i$ da distância $d_i$ que pode ser percorrida entre a partícula e a melhor posição individual e, a cada atualização, escolhe-se um valor aleatoriamente em $[0, k_i \cdot d_i]$ para a magnitude do deslocamento. De forma semelhante, é definida uma fração máxima $k_g$ da distância $d_g$ até a melhor posição global e escolhe-se aleatoriamente um valor em $[0, k_g \cdot d_g]$. Para adicionar um componente estocástico, escolhe-se uma constante $k_e$ e cria-se um vetor de valores aleatórios em $[-k_e, k_e]$ para ser utilizado como deslocamento.
-    

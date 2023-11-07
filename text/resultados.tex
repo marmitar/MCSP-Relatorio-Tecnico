@@ -7,7 +7,7 @@ Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos
     O tempo de execução de cada um dos algoritmos é bem diferente, como pode-se observar na \Cref{tab:bench-tempo}. Enquanto o tempo para aplicar as heurísticas de combinação é da ordem de $\unit{\micro\second}$ e para a gulosa da ordem de $\unit{\milli\second}$, o PSO pode demorar vários segundos para ter sua execução finalizada, dependendo de seus parâmetros e das instâncias.
 
     É válido ressaltar também a diferença entre a variação do tempo de execução das heurísticas com os parâmetros de geração das strings. Enquanto o fator principal pelo aumento do tempo para os outros algoritmos é o tamanho das strings de entrada, o PSO é substancialmente mais rápido para instâncias com maior número de rótulos e, consequentemente, menor ocorrência média de seus rótulos. Essa dependência será mais explorada na \Cref{sec:tempo-pso}.
-    
+
     \begin{table}[htb]
         \centering
         \begin{tabular}{ccc|cccc}
@@ -59,7 +59,7 @@ Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos
     \end{definition}
 
     A \Cref{fig:comparacao-pontuacao} mostra a pontuação média das heurísticas para diferentes parâmetros de geração de strings. Em ambos os casos, o PSO conseguiu melhorar ligeiramente o resultado obtido pelos outros algoritmos (já que utiliza os outros resultados como posições iniciais). Uma análise mais específica da diferença obtida entre o PSO e as outras heurísticas pode ser vista na \Cref{fig:pso-diff}.
-    
+
     \begin{figure}[htb]
         \centering
         \begin{subfigure}[b]{\textwidth}
