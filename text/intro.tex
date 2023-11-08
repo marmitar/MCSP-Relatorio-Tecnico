@@ -20,4 +20,28 @@ Seja uma string $A$, com $\abs{A}$ caracteres. Denotamos por $A_i$ o i-ésimo ca
 
 O \textbf{MCSP} consiste em encontrar uma partição comum de tamanho mínimo para duas strings balanceadas. Ao abordar o problema pela primeira vez, alguém poderia considerar uma solução direta: testar, para todas as possíveis configurações de separação em blocos de $A$, se é possível formar $B$ a partir de uma permutação e, com isso, escolher as soluções de menor tamanho. É fácil notar, no entanto, que tal algoritmo não é polinomial, de forma que é inviável para obter uma solução do problema, mesmo com instâncias de menos de 50 caracteres. De fato, provou-se que o MCSP é um problema NP-Difícil, exceto para o caso em que cada caractere ocorre apenas uma vez em cada string \cite{goldstein_minimum_2005}. Sendo assim, heurísticas são ótimos instrumentos para encontrar soluções boas para instâncias do problema.
 
-\todo[inline]{falar sobre proximas seções}
+\todo[inline]{
+(Gabriel) Acho que aqui vale a pena adicionar mais dois paragrafos um listando os algoritmos já conhecidos para partição e outro falando sobre as proximas seções.}
+
+{\color{red}
+Sobre os algoritmo para partição segue uma lista para vocês verem o que adicionar no texto (coloquei um arquivo mcsp.bib com as referências e os pdfs na pasta do Dropbox se vocês quiserem mais detalhes):
+\begin{itemize}
+    \item  2005-goldstein-etal: Provaram que o problema é NP-difícil e propuseram uma $1.1037$-aproximação para 2-MCSP (quando cada caractere tem até duas cópias), e uma $4$-aproximação para 3-MCSP.
+    \item 2005-chen-etal: Algoritmo SOAR, $1.5$-aproximação para 2-SMCSP e heuristica para o caso geral.
+    \item 2007-cormode-muthukrishnan: Apresentaram uma aproximação em $O(\log n \log^* n)$.
+    \item 2007-kolman-walen-2: Apresentaram uma $4k$ aproximação, onde $k$ é o numero maximo de cópias.
+    \item 2021-siqueira-etal-2: Apresentaram uma $2k$ aproximação, onde $k$ é o numero maximo de cópias.
+    \item 2004-chrobak-etal: Fizeram uma analize do algoritmo guloso (aproximação em $\Omega(n^{0.43})$ e em $O(n^{0.69})$).
+    \item 2014-goldstein-lewenstein: Sugeriram uma versão mais rapida (tempo linear) do algoritmo guloso.
+    \item 2007-kolman-walen: Modificaram o algoritmo guloso para garantir uma aproximação em $O(k^2)$.
+    \item 2007-he: Introduziram a ideia de utilizar singletons no algoritmo guloso.
+    \item 2017-ferdous-rahman: Heuristica da colonia de formigas.
+    \item 2015-blum-etal: Formulação do problema com programação linear inteira (PLI).
+    \item 2015-blum-raidl: Outro PLI.
+    \item 2016-blum-etal: Metaheuristica baseada na solução exata de instancas menores do problema.
+    \item 2018-blum: Adaptação da heuristica anterior para instancias maiores.
+    \item 2010-jiang-etal: Propuseram um algoritmo parametrizado com tempo em $O^*((k!)^{2c})$ ($c$ é o tamanho da solução).
+    \item 2013-bulteau-komusiewicz: Algoritmo parametrizado com tempo em $c^{21k^2} poly(n)$
+    \item 2013-bulteau-etal: Algoritmo parametrizado com tempo em $O(k^{2c'} . cn)$, $c$ é o número de blocos e $c'$ é o número de blocos que contém pelo menos um caractere replicado (equivalente ao algoritmo que vocês testaram em strings balanceadas).
+\end{itemize}
+}
