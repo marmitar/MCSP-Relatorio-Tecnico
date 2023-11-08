@@ -114,6 +114,7 @@
     ],
     "files.associations": {
         "*.pgf": "latex",
+        "*.tikz": "latex",
     },
     "diffEditor.ignoreTrimWhitespace": false,
 }

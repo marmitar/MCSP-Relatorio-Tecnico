@@ -1,0 +1,16 @@
+\begin{tikzpicture}[node distance = 0.8cm and 2cm]
+    \node[draw,circle] (v3) {$v_3$};
+    \node[draw,circle] (v1) [above left = of v3] {$v_1$};
+    \node[draw,circle] (v2) [below left = of v3] {$v_2$};
+    \node[draw,circle] (v4) [above right = of v3] {$v_4$};
+    \node[draw,circle] (v5) [below right = of v3] {$v_5$};
+
+    \path[draw]
+        (v1) edge (v2)
+        (v2) edge (v3)
+        (v3) edge (v1)
+        (v4) edge (v5)
+        (v5) edge (v3)
+        (v3) edge (v4)
+    ;
+\end{tikzpicture}
