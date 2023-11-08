@@ -117,4 +117,7 @@
         "*.tikz": "latex",
     },
     "diffEditor.ignoreTrimWhitespace": false,
+    "files.exclude": {
+        "build/": true
+    },
 }
