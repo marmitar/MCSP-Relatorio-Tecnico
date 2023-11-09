@@ -20,7 +20,7 @@
 
 %% Referências
 \usepackage{csquotes}
-\usepackage{biblatex}
+\usepackage[defernumbers=true,backend=biber]{biblatex}
 \addbibresource{references.bib}
 
 %% hyperlink de tudo dentro do \cite
@@ -29,3 +29,8 @@
     {\usebibmacro{citeindex}\printtext[bibhyperref]{[\usebibmacro{prenote}\usebibmacro{cite}\usebibmacro{postnote}]}}
     {\multicitedelim}
     {}
+
+%% references used in footnotes
+\defbibfilter{footies}{
+    not type=software
+}

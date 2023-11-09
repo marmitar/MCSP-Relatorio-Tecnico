@@ -22,9 +22,11 @@ Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos
         \end{tabular}
 
         \todo[inline]{FPT?}
-        \caption{Comparação de tempo de execução das diferentes heurísticas, relacionando cada conjunto de parâmetros de geração de strings ($n$, $r$ e $s$) ao tempo gasto por cada um dos algoritmos. Os valores de tempo foram obtidos através da média de execuções em diferentes instâncias, com a análise estatística realizada através da biblioteca \textit{Criterion} \cite{noauthor_criterion_nodate}. O PSO foi executado com $k_e = 0.5$, $k_i = 0.1$, $k_g = 0.1$, $D = (1, 3, 3, 3)$, 200 partículas e 100 iterações.}
+        \caption{Comparação de tempo de execução das diferentes heurísticas, relacionando cada conjunto de parâmetros de geração de strings ($n$, $r$ e $s$) ao tempo gasto por cada um dos algoritmos. Os valores de tempo foram obtidos através da média de execuções em diferentes instâncias, com a análise estatística realizada através da biblioteca \textit{Criterion}\protect\footnotemark. O PSO foi executado com $k_e = 0.5$, $k_i = 0.1$, $k_g = 0.1$, $D = (1, 3, 3, 3)$, 200 partículas e 100 iterações.}
         \label{tab:bench-tempo}
     \end{table}
+
+    \footnotetext{\fullcite{noauthor_criterion_nodate}}
 
     \subsubsection{Particle Swarm Optimization} \label{sec:tempo-pso}
 

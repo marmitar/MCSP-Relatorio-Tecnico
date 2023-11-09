@@ -35,6 +35,7 @@
 %% TODO Notes (remover depois)
 \setlength{\marginparwidth}{2cm}
 \usepackage{todonotes}
+\usepackage{soul}
 
 %%%%%%%%%%%%%%%
 %% Documento %%
@@ -128,9 +129,9 @@
 \todo[inline]{(Gabriel)\\
 - Pode "limpar" um pouco essas referências, retirar dois, urls, acesso em ..., ISBNs, nomes de editores e mês de publicação.\\
 - Trocar a referência para a minha dissertação, coloquei a citação correta em mcsp.bib.\\
-- A referência para o criterion fica melhor como footnote na hora que vocês mensionam ele (a menos que vocês coloquem uma citação para algum artigo que o descreva).\\
+\st{- A referência para o criterion fica melhor como footnote na hora que vocês mensionam ele (a menos que vocês coloquem uma citação para algum artigo que o descreva).}\\
 }
 
-    \printbibliography
+    \printbibliography[filter=footies]
 
 \end{document}
