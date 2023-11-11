@@ -1,6 +1,6 @@
-Outra forma de construir soluções boas para o MCSP é utilizando meta-heurísticas, i.e. algoritmos de otimização que utilizam aleatorização em conjunto com busca local \cite[p.~4]{yang_nature-inspired_2010}. Antes de aplicar algum dos vários algoritmos conhecidos, no entanto, é necessário representar as instâncias do problema utilizando uma estrutura de dados eficiente e adequada para tais procedimentos. Encontrar uma boa representação para problemas complexos, como esse, é uma etapa desafiadora, mas que pode simplificar muito a resolução.
+Outra forma de construir soluções boas para o MCSP é utilizando meta-heurísticas, i.e. algoritmos de otimização que utilizam aleatorização em conjunto com busca local \cite[p.~4]{yang_nature-inspired_2010} \todo{página 4? \cite{yang_nature-inspired_2010}}. Antes de aplicar algum dos vários algoritmos conhecidos, no entanto, é necessário representar as instâncias do problema utilizando uma estrutura de dados eficiente e adequada para tais procedimentos. Encontrar uma boa representação para problemas complexos, como esse, é uma etapa desafiadora, mas que pode simplificar muito a resolução.
 
-Desenvolvemos uma representação baseada em um grafo de substrings comuns \cite{ferdous_solving_2013}, adaptando a representação para arestas múltiplas e ignorando as substrings de tamanho unitário.
+Desenvolvemos uma representação baseada em um grafo de substrings comuns \cite{ferdous_solving_2017}, adaptando a representação para arestas múltiplas e ignorando as substrings de tamanho unitário.
 
 \begin{definition}[Grafo de substrings comuns]
     Dado um par de strings balanceadas $A$ e $B$ de tamanho $n = \abs{A} = \abs{B}$, temos o grafo de substrings comuns $G_{A,B}(V,E,\varphi)$ de $A$ em $B$ onde:
