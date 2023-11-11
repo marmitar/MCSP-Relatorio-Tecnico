@@ -4,7 +4,7 @@ Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos
 
 \subsection{Tempo de execução} \label{sec:resultados-tempo}
 
-    O tempo de execução de cada um dos algoritmos é bem diferente, como pode-se observar na \Cref{tab:bench-tempo}. Enquanto o tempo para aplicar as heurísticas de combinação é da ordem de $\unit{\micro\second}$ e para a gulosa da ordem de $\unit{\milli\second}$, o PSO pode demorar vários segundos para ter sua execução finalizada, dependendo de seus parâmetros e das instâncias.
+    O tempo de execução de cada um dos algoritmos é bem diferente, como pode-se observar na \Cref{tab:bench-tempo}. Enquanto o tempo para aplicar as heurísticas de combinação é da ordem de microssegundos e para a gulosa da ordem de milissegundos, o PSO pode demorar vários segundos para ter sua execução finalizada, dependendo de seus parâmetros e das instâncias.
 
     É válido ressaltar também a diferença entre a variação do tempo de execução das heurísticas com os parâmetros de geração das strings. Enquanto o fator principal pelo aumento do tempo para os outros algoritmos é o tamanho das strings de entrada, o PSO é substancialmente mais rápido para instâncias com maior número de rótulos e, consequentemente, menor ocorrência média de seus rótulos. Essa dependência será mais explorada na \Cref{sec:tempo-pso}.
 
@@ -21,8 +21,7 @@ Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos
             \bottomrule
         \end{tabular}
 
-        \todo[inline]{FPT?}
-        \caption{Comparação de tempo de execução das diferentes heurísticas, relacionando cada conjunto de parâmetros de geração de strings ($n$, $r$ e $s$) ao tempo gasto por cada um dos algoritmos. Os valores de tempo foram obtidos através da média de execuções em diferentes instâncias, com a análise estatística realizada através da biblioteca \textit{Criterion}\protect\footnotemark. O PSO foi executado com $k_e = 0.5$, $k_i = 0.1$, $k_g = 0.1$, $D = (1, 3, 3, 3)$, 200 partículas e 100 iterações.}
+        \caption{Comparação de tempo de execução das diferentes heurísticas, relacionando cada conjunto de parâmetros de geração de strings ($n$, $r$ e $s$) ao tempo gasto por cada um dos algoritmos. Os valores de tempo foram obtidos através da média de execuções em diferentes instâncias, com a análise estatística realizada através da biblioteca \textit{Criterion}\protect\footnotemark. O PSO foi executado com $k_E = 0.5$, $k_L = 0.1$, $k_G = 0.1$, $D = (1, 3, 3, 3)$, 200 partículas e 100 iterações.}
         \label{tab:bench-tempo}
     \end{table}
 
@@ -52,7 +51,7 @@ Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos
                 \label{fig:tempo-pso-arestas-vs-occ}
             \end{subfigure}
 
-            \caption{Análise do tempo de execução do PSO. Note que o tempo depende linearmente do número de arestas da representação por grafo da instância de entrada, como esperado. Além disso, a grandeza que melhor permite prever o tempo de execução do algoritmo é a ocorrência máxima dos caracteres da string. As strings foram geradas usando $5 \leq r \leq 10$, $5 \leq s \leq 30$, $n \leq 80$. O PSO foi executado utilizando $k_e = 2$, $k_i = 0.02$, $k_g = 0.02$, $D = (3, 1, 1, 1)$, 10 partículas e 1000 iterações.}
+            \caption{Análise do tempo de execução do PSO. Note que o tempo depende linearmente do número de arestas da representação por grafo da instância de entrada, como esperado. Além disso, a grandeza que melhor permite prever o tempo de execução do algoritmo é a ocorrência máxima dos caracteres da string. As strings foram geradas usando $5 \leq r \leq 10$, $5 \leq s \leq 30$, $n \leq 80$. O PSO foi executado utilizando $k_E = 2$, $k_L = 0.02$, $k_G = 0.02$, $D = (3, 1, 1, 1)$, 10 partículas e 1000 iterações.}
             \label{fig:tempo-pso}
         \end{figure}
 
@@ -85,7 +84,7 @@ Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos
             \vspace{12pt}
         \end{subfigure}
 
-        \caption{Comparação da pontuação média das heurísticas com diversos conjuntos de parâmetros de geração de strings. Em ambos os casos, o PSO foi utilizado com $k_e = 0.5$, $k_i = 0.1$, $k_g = 0.1$, $D = (1, 3, 3, 3)$, 200 partículas e 100 iterações.}
+        \caption{Comparação da pontuação média das heurísticas com diversos conjuntos de parâmetros de geração de strings. Em ambos os casos, o PSO foi utilizado com $k_E = 0.5$, $k_L = 0.1$, $k_G = 0.1$, $D = (1, 3, 3, 3)$, 200 partículas e 100 iterações.}
         \label{fig:comparacao-pontuacao}
     \end{figure}
 
@@ -93,7 +92,7 @@ Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos
         \centering
         \resizebox{0.7\textwidth}{!}{\import{images}{pso-diff.pgf}}
 
-        \caption{Comparação entre o número de blocos resultantes da aplicação do PSO e das outras heurísticas. O gráfico mostra a distribuição da diferença entre o número de blocos obtidos pelo PSO e uma dada heurística na mesma instância do MCSP. Note que o resultado mais comum é o empate. Strings geradas com $5 \leq r \leq 10$, $5 \leq s \leq 30$ e $n \leq 80$. PSO executado com $k_e = 0.5$, $k_i = 0.1$, $k_g = 0.1$, $D = (1, 3, 3, 3)$, 200 partículas e 100 iterações.}
+        \caption{Comparação entre o número de blocos resultantes da aplicação do PSO e das outras heurísticas. O gráfico mostra a distribuição da diferença entre o número de blocos obtidos pelo PSO e uma dada heurística na mesma instância do MCSP. Note que o resultado mais comum é o empate. Strings geradas com $5 \leq r \leq 10$, $5 \leq s \leq 30$ e $n \leq 80$. PSO executado com $k_E = 0.5$, $k_L = 0.1$, $k_G = 0.1$, $D = (1, 3, 3, 3)$, 200 partículas e 100 iterações.}
         \label{fig:pso-diff}
     \end{figure}
 
@@ -105,7 +104,7 @@ Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos
             \centering
             \resizebox{0.6\textwidth}{!}{\import{images}{pso-puro.pgf}}
 
-            \caption{Comparação entre a pontuação média das heurísticas, incluindo o PSO com posições inicias totalmente aleatórias. Apesar de haver uma ligeira diferença da pontuação média do PSO utilizando posições iniciais das outras heurísticas, o PSO com apenas posições iniciais aleatórias apresentou pontuação maior que as outras heurísticas. Strings geradas com $5 \leq r \leq 10$, $5 \leq s \leq 30$ e $n \leq 80$. PSO executado com $k_e = 2$, $k_i = 0.1$, $k_g = 0.1$, 200 partículas, 100 iterações e, para as execuções incluindo posições iniciais obtidas de outras formas, $D = (1, 3, 3, 3)$.}
+            \caption{Comparação entre a pontuação média das heurísticas, incluindo o PSO com posições inicias totalmente aleatórias. Apesar de haver uma ligeira diferença da pontuação média do PSO utilizando posições iniciais das outras heurísticas, o PSO com apenas posições iniciais aleatórias apresentou pontuação maior que as outras heurísticas. Strings geradas com $5 \leq r \leq 10$, $5 \leq s \leq 30$ e $n \leq 80$. PSO executado com $k_E = 2$, $k_L = 0.1$, $k_G = 0.1$, 200 partículas, 100 iterações e, para as execuções incluindo posições iniciais obtidas de outras formas, $D = (1, 3, 3, 3)$.}
             \label{fig:pso-puro}
         \end{figure}
 
@@ -115,10 +114,12 @@ Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos
 
         Comparamos também, para um conjunto restrito de instâncias pequenas, os resultados obtidos por um algoritmo de parâmetro fixo (FPT), que é exato para o MCSP, i.e. que sempre retorna uma solução ótima. A \Cref{fig:fpt} mostra que nenhuma das heurísticas acha de forma consistente a solução ótima para o problema, mas têm pontuações próximas a isso. A precisão desse conjunto de resultados é reduzida devido às restrições de quantidade e tamanho das instâncias, causadas pelo longo tempo necessário para executar o FPT. Ainda assim, é possível observar a tendência para cada um dos algoritmos.
 
+        Apesar de sempre encontrar a solução ótima, o FPT pode levar bastante tempo para ser executado com algumas instâncias. Para as utilizadas para a \Cref{fig:fpt}, o tempo mediano do FPT foi de \SI{3.8}{\second}, mas o tempo médio foi de \SI{121}{\second}, evidenciando que para alguns casos específicos, o tempo de execução é bem alto. Para comparação, os tempos médio e mediano do PSO foram de cerca de \SI{1.1}{\second}, utilizando 200 partículas e 100 iterações.
+
         \begin{figure}[htb]
             \centering
             \resizebox{0.6\textwidth}{!}{\import{images}{fpt.pgf}}
 
-            \caption{Comparação entre a pontuação média dos algoritmos, incluindo o FPT. Os dados incluem apenas 72 instâncias, com strings geradas utilizando $5 \leq r \leq 10$, $2 \leq s \leq 30$ e $19 \leq n \leq 36$. PSO executado com $k_e = 2$, $k_i = 0.1$, $k_g = 0.1$, 200 partículas, 100 iterações e, para as execuções incluindo posições iniciais obtidas de outras formas, $D = (1, 3, 3, 3)$.}
+            \caption{Comparação entre a pontuação média dos algoritmos, incluindo o FPT. Os dados incluem apenas 72 instâncias, com strings geradas utilizando $5 \leq r \leq 10$, $2 \leq s \leq 30$ e $19 \leq n \leq 36$. PSO executado com $k_E = 2$, $k_L = 0.1$, $k_G = 0.1$, 200 partículas, 100 iterações e, para as execuções incluindo posições iniciais obtidas de outras formas, $D = (1, 3, 3, 3)$.}
             \label{fig:fpt}
         \end{figure}
