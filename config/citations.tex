@@ -26,7 +26,7 @@
 %% hyperlink de tudo dentro do \cite
 \DeclareCiteCommand{\cite}
     {}
-    {\usebibmacro{citeindex}\printtext[bibhyperref]{[\usebibmacro{prenote}\usebibmacro{cite}\usebibmacro{postnote}]}}
+    {\usebibmacro{citeindex}\printtext[bibhyperref]{[\usebibmacro{prenote}{\protect\NoHyper\usebibmacro{cite}}\usebibmacro{postnote}]}}
     {\multicitedelim}
     {}
 
