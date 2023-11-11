@@ -34,3 +34,25 @@
 \defbibfilter{footies}{
     not type=software
 }
+
+%% ignore some fields
+\AtEveryBibitem{
+    %% URL
+    \clearfield{url}
+    %% accessed date
+    \clearfield{urlyear}
+    \clearfield{urlmonth}
+    \clearfield{urlday}
+    %% published date
+    % \clearfield{year}
+    \clearfield{month}
+    \clearfield{day}
+    %% editors
+    \clearname{editor}
+    % \clearlist{publisher}
+    %% other metadata
+    \clearfield{issn}
+    % \clearfield{isbn}
+    \clearfield{eprint}
+    \clearfield{note}
+}
