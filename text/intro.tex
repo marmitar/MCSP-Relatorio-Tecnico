@@ -26,22 +26,22 @@ O \textbf{MCSP} consiste em encontrar uma partição comum de tamanho mínimo pa
 {\color{red}
 Sobre os algoritmo para partição segue uma lista para vocês verem o que adicionar no texto (coloquei um arquivo mcsp.bib com as referências e os pdfs na pasta do Dropbox se vocês quiserem mais detalhes):
 \begin{itemize}
-    \item  2005-goldstein-etal: Provaram que o problema é NP-difícil e propuseram uma $1.1037$-aproximação para 2-MCSP (quando cada caractere tem até duas cópias), e uma $4$-aproximação para 3-MCSP.
-    \item 2005-chen-etal: Algoritmo SOAR, $1.5$-aproximação para 2-SMCSP e heuristica para o caso geral.
-    \item 2007-cormode-muthukrishnan: Apresentaram uma aproximação em $O(\log n \log^* n)$.
-    \item 2007-kolman-walen-2: Apresentaram uma $4k$ aproximação, onde $k$ é o numero maximo de cópias.
-    \item 2021-siqueira-etal-2: Apresentaram uma $2k$ aproximação, onde $k$ é o numero maximo de cópias.
-    \item 2004-chrobak-etal: Fizeram uma analize do algoritmo guloso (aproximação em $\Omega(n^{0.43})$ e em $O(n^{0.69})$).
-    \item 2014-goldstein-lewenstein: Sugeriram uma versão mais rapida (tempo linear) do algoritmo guloso.
-    \item 2007-kolman-walen: Modificaram o algoritmo guloso para garantir uma aproximação em $O(k^2)$.
-    \item 2007-he: Introduziram a ideia de utilizar singletons no algoritmo guloso.
-    \item 2017-ferdous-rahman: Heuristica da colonia de formigas.
-    \item 2015-blum-etal: Formulação do problema com programação linear inteira (PLI).
-    \item 2015-blum-raidl: Outro PLI.
-    \item 2016-blum-etal: Metaheuristica baseada na solução exata de instancas menores do problema.
-    \item 2018-blum: Adaptação da heuristica anterior para instancias maiores.
-    \item 2010-jiang-etal: Propuseram um algoritmo parametrizado com tempo em $O^*((k!)^{2c})$ ($c$ é o tamanho da solução).
-    \item 2013-bulteau-komusiewicz: Algoritmo parametrizado com tempo em $c^{21k^2} poly(n)$
-    \item 2013-bulteau-etal: Algoritmo parametrizado com tempo em $O(k^{2c'} . cn)$, $c$ é o número de blocos e $c'$ é o número de blocos que contém pelo menos um caractere replicado (equivalente ao algoritmo que vocês testaram em strings balanceadas).
+    \item  2005-goldstein-etal\cite{goldstein_minimum_2005}: Provaram que o problema é NP-difícil e propuseram uma \\ $1.1037$-aproximação para 2-MCSP (quando cada caractere tem até duas cópias), e uma $4$-aproximação para 3-MCSP.
+    \item 2005-chen-etal\cite{chen_assignment_2005}: Algoritmo SOAR, $1.5$-aproximação para 2-SMCSP e heuristica para o caso geral.
+    \item 2007-cormode-muthukrishnan\cite{cormode_string_2007}: Apresentaram uma aproximação em $O(\log n \log^* n)$.
+    \item 2007-kolman-walen-2\cite{kolman_reversal_2007}: Apresentaram uma $4k$-aproximação, onde $k$ é o numero maximo de cópias.
+    \item 2021-siqueira-etal-2\cite{siqueira_signed_2023}: Apresentaram uma $2k$-aproximação, onde $k$ é o numero maximo de cópias.
+    \item 2004-chrobak-etal\cite{chrobak_greedy_2004}: Fizeram uma analize do algoritmo guloso (aproximação em $\Omega(n^{0.43})$ e em $O(n^{0.69})$).
+    \item 2014-goldstein-lewenstein\cite{goldstein_quick_2014}: Sugeriram uma versão mais rapida (tempo linear) do algoritmo guloso.
+    \item 2007-kolman-walen\cite{kolman_approximating_2007}: Modificaram o algoritmo guloso para garantir uma aproximação em $O(k^2)$.
+    \item 2007-he\cite{mandoiu_novel_2007}: Introduziram a ideia de utilizar singletons no algoritmo guloso.
+    \item 2017-ferdous-rahman\cite{ferdous_solving_2017}: Heuristica da colonia de formigas.
+    \item 2015-blum-etal\cite{blum_mathematical_2015}: Formulação do problema com programação linear inteira (PLI).
+    \item 2015-blum-raidl\cite{blum_computational_2016}: Outro PLI.
+    \item 2016-blum-etal\cite{blum_construct_2016}: Metaheuristica baseada na solução exata de instancas menores do problema.
+    \item 2018-blum\cite{blum_minimum_2018}: Adaptação da heuristica anterior para instancias maiores.
+    \item 2010-jiang-etal\cite{jiang_minimum_2012}: Propuseram um algoritmo parametrizado com tempo em $O^*((k!)^{2c})$ ($c$ é o tamanho da solução).
+    \item 2013-bulteau-komusiewicz\cite{bulteau_minimum_2014}: Algoritmo parametrizado com tempo em $c^{21k^2} poly(n)$
+    \item 2013-bulteau-etal\cite{bulteau_fixed-parameter_2013}: Algoritmo parametrizado com tempo em $O(k^{2c'} . cn)$, $c$ é o número de blocos e $c'$ é o número de blocos que contém pelo menos um caractere replicado (equivalente ao algoritmo que vocês testaram em strings balanceadas).
 \end{itemize}
 }
