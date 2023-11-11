@@ -42,35 +42,4 @@
             (v4)
     ;
 \end{tikzpicture}
-
-% %% "abab" onto "abba"
-% \begin{tikzpicture}[
-%     ->,
-%     shorten <= 2pt,
-%     shorten >= 2pt,
-%     auto,
-%     node distance = 0.8cm and 1.5cm,
-%     inner sep = 5pt,
-%     % thick,
-% ]
-%     \node[draw,circle] (v1) {\texttt{a} (1)};
-%     \node[draw,circle] (v2) [right = of v1] {\texttt{b} (2)};
-%     \node[draw,circle] (v3) [right = of v2] {\texttt{a} (3)};
-%     \node[draw,circle] (v4) [right = of v3] {\texttt{b} (4)};
-
-%     \path[draw]
-%         (v1) edge [bend right = 60]
-%             node[sloped]{$e_{1,1,2}$}
-%             node[sloped,swap]{\backgroundstring{\foregroundstring{ab}ba}}
-%             (v2)
-%         (v2) edge [bend left = 60]
-%             node[sloped]{$e_{2,3,2}$}
-%             node[sloped,swap]{\backgroundstring{ab\foregroundstring{ba}}}
-%             (v3)
-%         (v3) edge [bend right = 60]
-%             node[sloped]{$e_{3,1,2}$}
-%             node[sloped,swap]{\backgroundstring{\foregroundstring{ab}ba}}
-%             (v4)
-%     ;
-% \end{tikzpicture}
 \endgroup

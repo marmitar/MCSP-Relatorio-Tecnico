@@ -32,9 +32,20 @@ Note que cada par de bloco representado por uma aresta pode ser utilizado na con
 
 \begin{figure}
     \centering
-    \import{images}{grafo.tikz}
+    \begin{subfigure}{\textwidth}
+        \centering
+        \import{images}{grafo-abba.tikz}
 
-    \caption{Grafo representando a instância (\texttt{abba}, \texttt{abab}).}
+        \caption{Grafo representando a instância (\texttt{abba}, \texttt{abab}).}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}
+        \centering
+        \import{images}{grafo-abab.tikz}
+
+        \caption{Grafo representando a instância (\texttt{abab}, \texttt{abba}).}
+    \end{subfigure}
+
+    \caption{Grafo representando as instâncias (\texttt{abba}, \texttt{abab}) e (\texttt{abab}, \texttt{abba}).}
     \label{fig:grafo}
 \end{figure}
 
