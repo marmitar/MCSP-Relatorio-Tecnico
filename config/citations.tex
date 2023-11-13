@@ -26,17 +26,35 @@
 %% hyperlink de tudo dentro do \cite
 \DeclareCiteCommand{\cite}
     {}
-    {\usebibmacro{citeindex}%
+    {
+        \usebibmacro{citeindex}%
         \printtext[bibhyperref]{[%
             \usebibmacro{prenote}%
-                \begin{NoHyper}%
-                    \usebibmacro{cite}%
-                \end{NoHyper}%
+            \begin{NoHyper}%
+                \usebibmacro{cite}%
+            \end{NoHyper}%
             \usebibmacro{postnote}%
-        ]}%
-    }
+        ]}}
     {\multicitedelim}
     {}
+
+% %% e no \textcite
+\DeclareCiteCommand{\textcite}
+    {\boolfalse{cbx:parens}}
+    {
+        \usebibmacro{citeindex}%
+        \printtext[bibhyperref]{%
+            \usebibmacro{prenote}%
+            \begin{NoHyper}%
+                \usebibmacro{textcite}%
+            \end{NoHyper}%
+            \usebibmacro{postnote}%
+            \ifbool{cbx:parens}
+                {\bibcloseparen\global\boolfalse{cbx:parens}}
+                {}%
+        }}
+    {\multicitedelim}
+    {\usebibmacro{textcite:postnote}}
 
 %% references used in footnotes
 \defbibfilter{footies}{
