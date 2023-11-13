@@ -20,28 +20,10 @@ Seja uma string $A$, com $\abs{A}$ caracteres. Denotamos por $A_i$ o i-ésimo ca
 
 O \textbf{MCSP} consiste em encontrar uma partição comum de tamanho mínimo para duas strings balanceadas. Ao abordar o problema pela primeira vez, alguém poderia considerar uma solução direta: testar, para todas as possíveis configurações de separação em blocos de $A$, se é possível formar $B$ a partir de uma permutação e, com isso, escolher as soluções de menor tamanho. É fácil notar, no entanto, que tal algoritmo não é polinomial, de forma que é inviável para obter uma solução do problema, mesmo com instâncias de menos de 50 caracteres. De fato, provou-se que o MCSP é um problema NP-Difícil, exceto para o caso em que cada caractere ocorre apenas uma vez em cada string \cite{goldstein_minimum_2005}. Sendo assim, heurísticas são ótimos instrumentos para encontrar soluções boas para instâncias do problema.
 
-\todo[inline]{
-(Gabriel) Acho que aqui vale a pena adicionar mais dois paragrafos um listando os algoritmos já conhecidos para partição e outro falando sobre as proximas seções.}
+Nas últimas décadas, diversos trabalhos fizeram progresso para encontrar melhores soluções e garantir aproximações para o MCSP. Em 2004, \textcite{chrobak_greedy_2004} mostraram que a heurística gulosa tem aproximação em $\Omega(n^{0.43})$ e em $O(n^{0.69})$. Em 2005, \textcite{goldstein_minimum_2005} provaram que o problema é NP-difícil, propondo uma 1.1037-aproximação para o 2-MCSP e uma 4-aproximação para o 3-MCSP. O $k$-MCSP é uma restrição do MCSP em que a ocorrência máxima da entrada é no máximo $k$. Ainda esse ano, \textcite{chen_assignment_2005} elaboraram o algoritmo SOAR com uma 1.5-aproximação para o 2-SMCSP (versão com sinais do problema). Em 2007, \textcite{cormode_string_2007} apresentaram uma aproximação em $O(\log n \log^* n)$ e \textcite{kolman_reversal_2007} mostraram uma $4k$-aproximação para o $k$-MCSP. Além disso, \textcite{mandoiu_novel_2007} introduziu a ideia de explorar os rótulos de ocorrência 1 para melhorar a heurística gulosa e \textcite{kolman_approximating_2007} modificaram essa heurística para garantir aproximação em $O(k^2)$. Em 2010, \textcite{jiang_minimum_2012} propuseram um algoritmo parametrizado com tempo em $O^*((k!)^{2c})$, em que $c$ é o tamanho da solução.
 
-{\color{red}
-Sobre os algoritmo para partição segue uma lista para vocês verem o que adicionar no texto (coloquei um arquivo mcsp.bib com as referências e os pdfs na pasta do Dropbox se vocês quiserem mais detalhes):
-\begin{itemize}
-    \item  2005-goldstein-etal\cite{goldstein_minimum_2005}: Provaram que o problema é NP-difícil e propuseram uma \\ $1.1037$-aproximação para 2-MCSP (quando cada caractere tem até duas cópias), e uma $4$-aproximação para 3-MCSP.
-    \item 2005-chen-etal\cite{chen_assignment_2005}: Algoritmo SOAR, $1.5$-aproximação para 2-SMCSP e heuristica para o caso geral.
-    \item 2007-cormode-muthukrishnan\cite{cormode_string_2007}: Apresentaram uma aproximação em $O(\log n \log^* n)$.
-    \item 2007-kolman-walen-2\cite{kolman_reversal_2007}: Apresentaram uma $4k$-aproximação, onde $k$ é o numero maximo de cópias.
-    \item 2021-siqueira-etal-2\cite{siqueira_signed_2023}: Apresentaram uma $2k$-aproximação, onde $k$ é o numero maximo de cópias.
-    \item 2004-chrobak-etal\cite{chrobak_greedy_2004}: Fizeram uma analize do algoritmo guloso (aproximação em $\Omega(n^{0.43})$ e em $O(n^{0.69})$).
-    \item 2014-goldstein-lewenstein\cite{goldstein_quick_2014}: Sugeriram uma versão mais rapida (tempo linear) do algoritmo guloso.
-    \item 2007-kolman-walen\cite{kolman_approximating_2007}: Modificaram o algoritmo guloso para garantir uma aproximação em $O(k^2)$.
-    \item 2007-he\cite{mandoiu_novel_2007}: Introduziram a ideia de utilizar singletons no algoritmo guloso.
-    \item 2017-ferdous-rahman\cite{ferdous_solving_2017}: Heuristica da colonia de formigas.
-    \item 2015-blum-etal\cite{blum_mathematical_2015}: Formulação do problema com programação linear inteira (PLI).
-    \item 2015-blum-raidl\cite{blum_computational_2016}: Outro PLI.
-    \item 2016-blum-etal\cite{blum_construct_2016}: Metaheuristica baseada na solução exata de instancas menores do problema.
-    \item 2018-blum\cite{blum_minimum_2018}: Adaptação da heuristica anterior para instancias maiores.
-    \item 2010-jiang-etal\cite{jiang_minimum_2012}: Propuseram um algoritmo parametrizado com tempo em $O^*((k!)^{2c})$ ($c$ é o tamanho da solução).
-    \item 2013-bulteau-komusiewicz\cite{bulteau_minimum_2014}: Algoritmo parametrizado com tempo em $c^{21k^2} poly(n)$
-    \item 2013-bulteau-etal\cite{bulteau_fixed-parameter_2013}: Algoritmo parametrizado com tempo em $O(k^{2c'} . cn)$, $c$ é o número de blocos e $c'$ é o número de blocos que contém pelo menos um caractere replicado (equivalente ao algoritmo que vocês testaram em strings balanceadas).
-\end{itemize}
-}
+Em 2013, \textcite{bulteau_minimum_2014} conseguiram um algoritmo parametrizado com tempo em $c^{21k^2} \text{poli}(n)$ e, no mesmo ano, \textcite{bulteau_fixed-parameter_2013} atingiram um algoritmo parametrizado com tempo em $O(k^{2c'} \cdot cn)$, em que $c'$ é o número de blocos que contém pelo menos um caractere replicado. Em 2014, \textcite{goldstein_quick_2014} sugeriram uma versão da heurística gulosa em tempo linear. No ano seguinte, \textcite{blum_mathematical_2015} formulou o problema utilizando programação linear inteira (PLI) e outra formulação com PLI foi feita por \textcite{blum_computational_2016}. Em 2016, \textcite{blum_construct_2016} construíram uma meta-heurística que utiliza soluções exatas de instâncias menores do problema. Esse algoritmo foi adaptado em 2018 para instâncias maiores \cite{blum_minimum_2018}.
+
+Em 2016, \textcite{ferdous_solving_2017} implementaram uma meta-heurística que se baseia no método da colônia de formigas para encontrar soluções para o MCSP, utilizando uma representação por grafo de substrings comuns das strings de entrada do problema. Recentemente, em 2021, \textcite{siqueira_signed_2023} apresentaram uma $2k$-aproximação para o problema.
+
+Nas seções desse relatório, primeiramente mostraremos e explicaremos heurísticas diretas e determinísticas para o MCSP: a de combinação e a gulosa. Depois, discutiremos uma representação por grafo para as entradas do problema, que permite a aplicação de algoritmos de otimização. Em seguida, mostraremos detalhadamente uma implementação do \textit{Particle Swarm Optimization} utilizado em conjunto com a representação desenvolvida. Por fim, discutiremos os resultados obtidos e o tempo de execução das heurísticas.

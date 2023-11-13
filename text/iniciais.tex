@@ -84,6 +84,6 @@ Como uma primeira abordagem para a resolução do MCSP, utilizaremos duas heurí
 
         O problema de encontrar a maior substring comum entre duas strings pode ser resolvido com a ajuda de uma árvore de sufixos. Tal árvore é uma versão especializada de uma \textit{Radix tree} contendo todos os sufixos de cada string e algum marcador referente a string original.
 
-        Com essa representação, o problema da maior substring comum se transforma em um problema de encontrar o ancestral comum mais recente entre duas folhas de origens distintas na árvore. Esse ancestral comum representa o maior prefixo comum entre todos os sufixos das duas strings, sendo portanto a maior subtring comum entre elas.
+        Com essa representação, o problema da maior substring comum se transforma em um problema de encontrar o ancestral comum mais recente entre duas folhas de origens distintas na árvore. Esse ancestral comum representa o maior prefixo comum entre todos os sufixos das duas strings, sendo portanto a maior substring comum entre elas.
 
         A árvore de sufixos pode ser adaptada também para manter substrings de múltiplas string distintas, permitindo a implementação eficiente da maior substring comum em uma coleção de strings. Esse adaptação não foi implementada nesse trabalho.
