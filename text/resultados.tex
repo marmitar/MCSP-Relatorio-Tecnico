@@ -2,7 +2,7 @@ A fim de avaliar os resultados e a eficiência das heurísticas implementadas, c
 
 Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos nos diferentes cenários, visando demonstrar as situações que favorecem algumas das heurísticas. Em seguida, na \Cref{sec:resultados-tamanho}, discutiremos o tamanho das partições resultantes para avaliar de fato cada um dos algoritmos. Para todos os testes realizados, exceto quando explicitado, fora utilizadas pelo menos 3000 diferentes instâncias do problema.
 
-\subsection{Tempo de execução} \label{sec:resultados-tempo}
+\subsection{Tempo de Execução} \label{sec:resultados-tempo}
 
     O tempo de execução de cada um dos algoritmos é bem diferente, como pode-se observar na \Cref{tab:bench-tempo}. Enquanto o tempo para aplicar as heurísticas de combinação é da ordem de microssegundos e para a gulosa da ordem de milissegundos, o PSO pode demorar vários segundos para ter sua execução finalizada, dependendo de seus parâmetros e das instâncias.
 
@@ -55,7 +55,7 @@ Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos
             \label{fig:tempo-pso}
         \end{figure}
 
-\subsection{Tamanho das partições} \label{sec:resultados-tamanho}
+\subsection{Tamanho das Partições} \label{sec:resultados-tamanho}
 
     Para avaliar o resultado da aplicação das heurísticas de forma independente do tamanho da string, definimos uma forma de pontuação, de forma que uma partição comum com apenas blocos unitários tem pontuação 0 e uma partição comum com apenas um bloco recebe pontuação 1. Note que raramente a solução ótima do MCSP recebe pontuação 1: isso ocorre apenas se as strings forem iguais.
 
@@ -96,7 +96,7 @@ Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos
         \label{fig:pso-diff}
     \end{figure}
 
-    \subsubsection{PSO com posições iniciais totalmente aleatórias}
+    \subsubsection{PSO com Posições Iniciais Totalmente Aleatórias}
 
         Até aqui analisamos o desempenho do PSO utilizando algumas das posições iniciais criadas a partir de resultados de outras heurísticas, de forma que seu resultado foi sempre no mínimo tão bom quanto ao da melhor heurística entre a gulosa e a combinação-S. A \Cref{fig:pso-puro} mostra uma comparação que inclui também o PSO com todas as posições iniciais sendo geradas de forma totalmente aleatória. Apesar de obter uma pontuação média ligeiramente menor que o algoritmo que inclui as outras formas de gerar posições iniciais, essa variação mais simples também foi capaz de obter melhores pontuações que as heurísticas gulosa e combinação-S, o que demonstra a eficácia do algoritmo, mesmo quando utilizado sem o auxílio das outras heurísticas.
 
@@ -108,17 +108,17 @@ Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos
             \label{fig:pso-puro}
         \end{figure}
 
-    \subsubsection{PSO com combinação}
+    \subsubsection{PSO com Combinação}
 
         O PSO não garante que a partição comum resultante é maximal em relação à combinação de blocos adjacentes. Dessa forma, pode-se aplicar a heurística de combinação ao resultado obtido numa tentativa de melhorá-lo. Após alguns testes, concluímos que na prática são raríssimos os casos em que há alteração do tamanho da partição comum, mas como o tempo de execução da heurística de combinação é desprezível quando comparado ao do PSO, essa seria uma boa prática para garantir um resultado maximal.
 
         Outra possibilidade seria aplicar a heurística de combinação às partições comuns formadas por cada partícula em cada iteração antes de medir o tamanho, adicionando uma etapa à função objetivo da otimização. Testes com essa alteração mostraram que, para algumas instâncias, resultados ligeiramente melhores são obtidos, mas para algumas outras o tamanho da partição comum resultante é maior. Isso acontece porque, ao alterar a forma com que as partículas são avaliadas, as melhores posições individual e global são outras e, consequentemente, as partículas seguem por caminhos diferentes. Além disso, nesse caso, o tempo de execução é impactado significativamente, já que a heurística de combinação é executada para cada partícula em cada iteração.
 
-    \subsubsection{Outros algoritmos da literatura}
+    \subsubsection{Outros Algoritmos da Literatura}
 
-        Além de comparar as heurísticas implementadas entre si, executamos também outros algoritmos desenvolvidos para o MCSP. Em um primeiro momento, utilizamos outras implementações das heurísticas gulosa e combinação-S disponíveis \cite{siqueira_signed_2023}. Ao aplicar as nossas e as outras implementações às mesmas instâncias do problema, obtivemos resultados idênticos.
+        Além de comparar as heurísticas implementadas entre si, executamos também outros algoritmos desenvolvidos para o MCSP. Em um primeiro momento, utilizamos outras implementações das heurísticas gulosa e combinação-S disponíveis~\cite{siqueira_signed_2023}. Ao aplicar as nossas e as outras implementações às mesmas instâncias do problema, obtivemos resultados idênticos.
 
-        Comparamos também, para um conjunto restrito de instâncias pequenas, os resultados obtidos por um algoritmo de parâmetro fixo (FPT), que é exato para o MCSP, i.e. sempre retorna uma solução ótima. A \Cref{fig:fpt} mostra que nenhuma das heurísticas acha de forma consistente a solução ótima para o problema, mas têm pontuações próximas a isso. A precisão desse conjunto de resultados é reduzida devido às restrições de quantidade e tamanho das instâncias, causadas pelo longo tempo necessário para executar o FPT. Ainda assim, é possível observar a tendência para cada um dos algoritmos.
+        Comparamos também, para um conjunto restrito de instâncias pequenas, os resultados obtidos por um algoritmo de parâmetro fixo (FPT), que é exato para o MCSP, i.e., sempre retorna uma solução ótima. A \Cref{fig:fpt} mostra que nenhuma das heurísticas acha de forma consistente a solução ótima para o problema, mas têm pontuações próximas a isso. A precisão desse conjunto de resultados é reduzida devido às restrições de quantidade e tamanho das instâncias, causadas pelo longo tempo necessário para executar o FPT. Ainda assim, é possível observar a tendência para cada um dos algoritmos.
 
         Apesar de sempre encontrar a solução ótima, o FPT pode levar bastante tempo para ser executado com algumas instâncias. Para as utilizadas para a \Cref{fig:fpt}, o tempo mediano do FPT foi de \SI{3.8}{\second}, mas o tempo médio foi de \SI{121}{\second}, evidenciando que para alguns casos específicos, o tempo de execução é bem alto. Para comparação, os tempos médio e mediano do PSO foram de cerca de \SI{1.1}{\second}, utilizando 200 partículas e 100 iterações.
 

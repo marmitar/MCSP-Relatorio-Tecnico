@@ -23,10 +23,13 @@
 \usepackage[defernumbers=true,backend=biber]{biblatex}
 \addbibresource{references.bib}
 
+%% evita quebra de linha entre nome e número no \textcite
+\renewcommand\namelabeldelim{\addnbspace}
+
 %% hyperlink de tudo dentro do \cite
 \DeclareCiteCommand{\cite}
     {}
-    {
+    {%
         \usebibmacro{citeindex}%
         \printtext[bibhyperref]{[%
             \usebibmacro{prenote}%

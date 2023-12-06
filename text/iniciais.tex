@@ -1,6 +1,6 @@
-Como uma primeira abordagem para a resolução do MCSP, utilizaremos duas heurísticas diretas e determinísticas, que utilizam alguma característica do problema para tentar encontrar soluções com boa qualidade: a heurística de combinação e a heurística gulosa.
+Como uma primeira abordagem para a resolução do MCSP, apresentaremos duas heurísticas diretas e determinísticas, que utilizam alguma característica do problema para tentar encontrar soluções com boa qualidade: a heurística de combinação e a heurística gulosa.
 
-\subsection{Combinação}
+\subsection{Heurística de Combinação}
 
     A heurística de combinação consiste em um algoritmo que inicia com uma solução trivial do problema (blocos de um caractere cada) e tenta agrupar blocos mantendo uma solução válida. A implementação escolhida consiste em analisar os blocos das strings da esquerda para a direita e agrupá-los sempre que possível, como mostra o \Cref{alg:combine}. A escolha arbitrária de quais blocos serão combinados, no entanto, compromete a qualidade da solução gerada.
 
@@ -21,7 +21,7 @@ Como uma primeira abordagem para a resolução do MCSP, utilizaremos duas heurí
         \end{codebox}
     \end{algorithm}
 
-    \subsubsection{Análise de singletons}
+    \subsubsection{Análise de Singletons}
 
         \begin{definition}[Singleton]
             Um caractere de uma string é dito singleton se a ocorrência de seu rótulo na string é 1.
@@ -58,7 +58,7 @@ Como uma primeira abordagem para a resolução do MCSP, utilizaremos duas heurí
         \end{codebox}
     \end{algorithm}
 
-\subsection{Gulosa}
+\subsection{Heurística Gulosa}
 
     Uma outra estratégia para encontrar soluções do MCSP é a gulosa. Tal algoritmo consiste em iterativamente escolher blocos grandes que coincidam entre as duas strings e marcá-los. Em cada iteração, escolhe-se a maior substring comum entre $S$ e $P$ que não coincida com blocos já marcados em nenhuma das strings. Os dois novos blocos correspondentes são então marcados. O algoritmo progride dessa forma até que todos os caracteres das strings pertençam a blocos marcados, formando então uma partição comum.
 
@@ -80,9 +80,9 @@ Como uma primeira abordagem para a resolução do MCSP, utilizaremos duas heurí
         \end{codebox}
     \end{algorithm}
 
-    \subsubsection{Maior substring comum}
+    \subsubsection{Maior Substring Comum}
 
-        O problema de encontrar a maior substring comum entre duas strings pode ser resolvido com a ajuda de uma árvore de sufixos. Tal árvore é uma versão especializada de uma \textit{Radix tree} contendo todos os sufixos de cada string e algum marcador referente a string original.
+        O problema de encontrar a maior substring comum entre duas strings pode ser resolvido com a ajuda de uma árvore de sufixos. Tal árvore é uma versão especializada de uma \textit{Radix Tree} contendo todos os sufixos de cada string e algum marcador referente a string original.
 
         Com essa representação, o problema da maior substring comum se transforma em um problema de encontrar o ancestral comum mais recente entre duas folhas de origens distintas na árvore. Esse ancestral comum representa o maior prefixo comum entre todos os sufixos das duas strings, sendo portanto a maior substring comum entre elas.
 
