@@ -18,7 +18,7 @@
     shorten <= 2pt,
     shorten >= 2pt,
     auto,
-    node distance = 0.8cm and 1.5cm,
+    node distance = 0.8cm and 1.4cm,
     inner sep = 5pt,
     % thick,
 ]
