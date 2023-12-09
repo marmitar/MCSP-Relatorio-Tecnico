@@ -12,7 +12,7 @@ Para aplicar ao contexto do MCSP, iniciamos o algoritmo construindo a representa
 
     Outra forma de propiciar posições iniciais de qualidade é incluindo ordenações do vetor de arestas por tamanho do bloco, obtendo partições comuns similares à heurística gulosa. Para isso, são gerados pesos aleatórios no intervalo $[-1,1]$ e arranjados de forma a priorizar as arestas com maiores blocos.
 
-    Por fim, a geração totalmente aleatória dos pesos uniformemente em $[-1,1]$, apesar de ingênua, gerou bons resultados por si só e também mostrou-se útil quando combinada às outras formas de construção de posições iniciais. De forma geral, consolidamos a criação das posições iniciais do enxame utilizando os procedimentos descritos:
+    Por fim, a geração totalmente aleatória dos pesos uniformemente no intervalo $[-1,1]$, apesar de ingênua, gerou bons resultados por si só e também mostrou-se útil quando combinada às outras formas de construção de posições iniciais. De forma geral, consolidamos a criação das posições iniciais do enxame utilizando os procedimentos descritos:
 
     \begin{enumerate}[
         label = {\alph*)},
@@ -34,7 +34,7 @@ Para aplicar ao contexto do MCSP, iniciamos o algoritmo construindo a representa
 
     Experimentos posteriores com o PSO consideraram diferentes componentes para atualização das posições, como a implementação de um sistema de inércia e um limite máximo para a velocidade da partícula~\cite{shi_parameter_1998}.
 
-    Nossa implementação do algoritmo aqui apresentada para o MCSP utiliza uma combinação das componentes originais, com uma vizinhança global, e um comportamento estocástico~\cite[p.~642]{marti_handbook_2018}. Seja $\vec{p}_j$ a posição de uma partícula na iteração $j$, $\vec{p}_L$ a sua melhor posição até agora e $\vec{p}_G$ a melhor posição encontrada pelo enxame. Define-se estaticamente $k_L$, $k_G$ e $k_E$, como parâmetros do algoritmo. Se $R_L \sim \text{Uniforme}(0, k_L)$, $R_G \sim \text{Uniforme}(0, k_G)$ e se $\vec{R}_E$ representa um vetor de componentes geradas uniformemente de forma aleatória em $[-k_E, k_E]$, então
+    Nossa implementação do algoritmo aqui apresentada para o MCSP utiliza uma combinação das componentes originais, com uma vizinhança global, e um comportamento estocástico~\cite[p.~642]{marti_handbook_2018}. Seja $\vec{p}_j$ a posição de uma partícula na iteração $j$, $\vec{p}_L$ a sua melhor posição até agora e $\vec{p}_G$ a melhor posição encontrada pelo enxame. Define-se estaticamente $k_L$, $k_G$ e $k_E$, como parâmetros do algoritmo. Se $R_L \sim \text{Uniforme}(0, k_L)$, $R_G \sim \text{Uniforme}(0, k_G)$ e se $\vec{R}_E$ representa um vetor de componentes geradas uniformemente de forma aleatória no intervalo $[-k_E, k_E]$, então
 
     \[
         \vec{p}_{j+1} = \vec{p}_j + \left(\vec{p}_L - \vec{p}_j\right) \cdot R_L + \left(\vec{p}_G - \vec{p}_j\right) \cdot R_G + \vec{R}_E
@@ -42,10 +42,35 @@ Para aplicar ao contexto do MCSP, iniciamos o algoritmo construindo a representa
 
 \subsection{Exemplo de Execução}
 
-    \begin{figure}
+    Para demonstrar o funcionamento do PSO, vejamos como uma entrada pequena do problema seria abordada. Utilizaremos para isso a instância (\texttt{cdbcea}, \texttt{bceacd}). O primeiro passo é criar a representação por grafo, que pode ser vista na \Cref{fig:grafo-pso}. A partir dela, podemos extrair o vetor de arestas, de tamanho~7.
+
+    Neste pequeno exemplo, utilizamos uma única partícula com 5 iterações. A posição inicial foi gerada de forma totalmente aleatória e escolhemos $k_L = 0.1$, $k_G = 0.1$ e $k_E = 2$. A \Cref{tab:pso-ex} mostra o vetor de arestas em sua ordenação original e, para as 5 iterações do algoritmo, as componentes da posição da partícula e a partição correspondente ao vetor de arestas ordenado utilizando as componentes como pesos.
+
+    Note que as primeiras arestas a serem consideradas são as relacionadas aos menores pesos, já que a ordenação é feita por ordem crescente deles. Ao observar o grafo da \Cref{fig:grafo-pso}, podemos esperar que uma posição que resulta em uma partição comum de tamanho pequeno (\texttt{[cd,bcea],[bcea,cd]}) deve ter a componente relacionada à aresta $e_{3,1,4}$ com valor menor às relacionadas a outras arestas coincidentes. De fato, a quarta iteração da \Cref{tab:pso-ex}, que contém essa exata partição comum resultante, tem como menor componente aquela relacionada à aresta $e_{3,1,4}$.
+
+    \begin{figure}[htb]
         \centering
         \import{images}{grafo-cdbcea.tikz}
     
-        \caption{Grafo representando a instância (\texttt{cdbcea}, \texttt{bceacd}). Vetor equivalente $\left[e_{1,5,2}, e_{3,1,2}, e_{3,1,3}, e_{3,1,4}, e_{4,2,2}, e_{4,2,3}, e_{5,3,2}\right]$}
+        \caption{Grafo representando a instância (\texttt{cdbcea}, \texttt{bceacd}).}
         \label{fig:grafo-pso}
     \end{figure}
+
+    \begin{table}[htb]
+        \centering
+        \begin{tabular}{rrrrrrr|c}
+            \toprule
+            \multicolumn{7}{c|}{Componentes da posição (pesos)} & \multirow{2}{*}{Partição comum resultante} \\
+            $e_{1,5,2}$ & $e_{3,1,2}$ & $e_{3,1,3}$ & $e_{3,1,4}$ & $e_{4,2,2}$ & $e_{4,2,3}$ & $e_{5,3,2}$ & \\
+            \midrule
+            -0.043 & -0.069 & 0.186 & -0.901 & -0.957 & -0.409 & -0.478 & \texttt{[cd,b,ce,a],[b,ce,a,cd]} \\
+            -0.840 & 0.985 & -0.463 & -0.416 & -0.969 & 0.993 & 0.190 & \texttt{[cd,b,ce,a],[b,ce,a,cd]} \\
+            0.763 & -0.192 & 0.966 & 0.088 & -1.483 & -0.062 & 0.626 & \texttt{[cd,b,ce,a],[b,ce,a,cd]} \\
+            -0.452 & 0.195 & 0.252 & -1.924 & 0.349 & -0.754 & 0.211 & \texttt{[cd,bcea],[bcea,cd]} \\
+            -0.443 & 1.671 & -0.979 & -1.739 & -0.514 & -2.181 & -0.867 & \texttt{[cd,bce,a],[bce,a,cd]} \\
+            \bottomrule
+        \end{tabular}
+
+        \caption{Posições de uma partícula e respectiva partição comum durante 5 iterações da execução do PSO na instância (\texttt{cdbcea}, \texttt{bceacd}). Cada componente da posição é utilizada como peso para ordenar as arestas do grafo e encontrar diferentes partições comuns.}
+        \label{tab:pso-ex}
+    \end{table}
