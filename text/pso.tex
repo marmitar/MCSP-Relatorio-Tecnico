@@ -42,12 +42,6 @@ Para aplicar ao contexto do MCSP, iniciamos o algoritmo construindo a representa
 
 \subsection{Exemplo de Execução}
 
-    Para demonstrar o funcionamento do PSO, vejamos como uma entrada pequena do problema seria abordada. Utilizaremos para isso a instância (\texttt{cdbcea}, \texttt{bceacd}). O primeiro passo é criar a representação por grafo, que pode ser vista na \Cref{fig:grafo-pso}. A partir dela, podemos extrair o vetor de arestas, de tamanho~7.
-
-    Neste pequeno exemplo, utilizamos uma única partícula com 5 iterações. A posição inicial foi gerada de forma totalmente aleatória e escolhemos $k_L = 0.1$, $k_G = 0.1$ e $k_E = 2$. A \Cref{tab:pso-ex} mostra o vetor de arestas em sua ordenação original e, para as 5 iterações do algoritmo, as componentes da posição da partícula e a partição correspondente ao vetor de arestas ordenado utilizando as componentes como pesos.
-
-    Note que as primeiras arestas a serem consideradas são as relacionadas aos menores pesos, já que a ordenação é feita por ordem crescente deles. Ao observar o grafo da \Cref{fig:grafo-pso}, podemos esperar que uma posição que resulta em uma partição comum de tamanho pequeno (\texttt{[cd,bcea]}, \texttt{[bcea,cd]}) deve ter a componente relacionada à aresta $e_{3,1,4}$ com valor menor às relacionadas a outras arestas coincidentes. De fato, a quarta iteração da \Cref{tab:pso-ex}, que contém essa exata partição comum resultante, tem como menor componente aquela relacionada à aresta $e_{3,1,4}$.
-
     \begin{figure}[htb]
         \centering
         \import{images/graph}{cdbcea.tikz}
@@ -55,6 +49,10 @@ Para aplicar ao contexto do MCSP, iniciamos o algoritmo construindo a representa
         \caption{Grafo representando a instância (\texttt{cdbcea}, \texttt{bceacd}).}
         \label{fig:grafo-pso}
     \end{figure}
+
+    Para demonstrar o funcionamento do PSO, vejamos como uma entrada pequena do problema seria abordada. Utilizaremos para isso a instância (\texttt{cdbcea}, \texttt{bceacd}). O primeiro passo é criar a representação por grafo, que pode ser vista na \Cref{fig:grafo-pso}. A partir dela, podemos extrair o vetor de arestas, de tamanho~7.
+
+    Neste pequeno exemplo, utilizamos uma única partícula com 5 iterações. A posição inicial foi gerada de forma totalmente aleatória e escolhemos $k_L = 0.1$, $k_G = 0.1$ e $k_E = 2$. A \Cref{tab:pso-ex} mostra o vetor de arestas em sua ordenação original e, para as 5 iterações do algoritmo, as componentes da posição da partícula e a partição correspondente ao vetor de arestas ordenado utilizando as componentes como pesos.
 
     \begin{table}[htb]
         \centering
@@ -74,6 +72,10 @@ Para aplicar ao contexto do MCSP, iniciamos o algoritmo construindo a representa
         \caption{Posições de uma partícula e respectiva partição comum durante 5 iterações da execução do PSO na instância (\texttt{cdbcea}, \texttt{bceacd}). Cada componente da posição é utilizada como peso para ordenar as arestas do grafo e encontrar diferentes partições comuns.}
         \label{tab:pso-ex}
     \end{table}
+
+    \newpage
+
+    Note que as primeiras arestas a serem consideradas são as relacionadas aos menores pesos, já que a ordenação é feita por ordem crescente deles. Ao observar o grafo da \Cref{fig:grafo-pso}, podemos esperar que uma posição que resulta em uma partição comum de tamanho pequeno (\texttt{[cd,bcea]}, \texttt{[bcea,cd]}) deve ter a componente relacionada à aresta $e_{3,1,4}$ com valor menor às relacionadas a outras arestas coincidentes. De fato, a quarta iteração da \Cref{tab:pso-ex}, que contém essa exata partição comum resultante, tem como menor componente aquela relacionada à aresta $e_{3,1,4}$.
 
     \begin{figure}[htb]
         \centering
