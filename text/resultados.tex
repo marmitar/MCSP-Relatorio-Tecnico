@@ -71,14 +71,14 @@ Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos
         \centering
         \begin{subfigure}[b]{\textwidth}
             \centering
-            \resizebox{0.7\textwidth}{!}{\import{images}{r50-s-5-10-n220-ke0.5-ki0.1-kg0.1-dist1-3-3-3-iter100-part200.pgf}}
+            \resizebox{0.7\textwidth}{!}{\import{images/score}{r50-s-5-10-n220-ke0.5-ki0.1-kg0.1-dist1-3-3-3-iter100-part200.pgf}}
             \caption{Strings geradas com $r = 50$, $5 \leq s \leq 10$ e $n \leq 220$.}
             \vspace{12pt}
         \end{subfigure}
 
         \begin{subfigure}[b]{\textwidth}
             \centering
-            \resizebox{0.7\textwidth}{!}{\import{images}{r-5-10-s-5-30-n80-ke0.5-ki0.1-kg0.1-dist1-3-3-3-iter100-part200.pgf}}
+            \resizebox{0.7\textwidth}{!}{\import{images/score}{r-5-10-s-5-30-n80-ke0.5-ki0.1-kg0.1-dist1-3-3-3-iter100-part200.pgf}}
 
             \caption{Strings geradas com $5 \leq r \leq 10$, $5 \leq s \leq 30$ e $n \leq 80$.}
             \vspace{12pt}
@@ -102,7 +102,7 @@ Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos
 
         \begin{figure}[htb]
             \centering
-            \resizebox{0.6\textwidth}{!}{\import{images}{pso-puro.pgf}}
+            \resizebox{0.6\textwidth}{!}{\import{images/score}{pso-puro.pgf}}
 
             \caption{Comparação entre a pontuação média das heurísticas, incluindo o PSO com posições inicias totalmente aleatórias. Apesar de haver uma ligeira diferença da pontuação média do PSO utilizando posições iniciais das outras heurísticas, o PSO com apenas posições iniciais aleatórias apresentou pontuação maior que as outras heurísticas. Strings geradas com $5 \leq r \leq 10$, $5 \leq s \leq 30$ e $n \leq 80$. PSO executado com $k_E = 2$, $k_L = 0.1$, $k_G = 0.1$, 200 partículas, 100 iterações e, para as execuções incluindo posições iniciais obtidas de outras formas, $D = (1, 3, 3, 3)$.}
             \label{fig:pso-puro}
@@ -124,7 +124,7 @@ Analisaremos na \Cref{sec:resultados-tempo} o tempo de execução dos algoritmos
 
         \begin{figure}[htb]
             \centering
-            \resizebox{0.6\textwidth}{!}{\import{images}{fpt.pgf}}
+            \resizebox{0.6\textwidth}{!}{\import{images/score}{fpt.pgf}}
 
             \caption{Comparação entre a pontuação média dos algoritmos, incluindo o FPT. Os dados incluem apenas 72 instâncias, com strings geradas utilizando $5 \leq r \leq 10$, $2 \leq s \leq 30$ e $19 \leq n \leq 36$. PSO executado com $k_E = 2$, $k_L = 0.1$, $k_G = 0.1$, 200 partículas, 100 iterações e, para as execuções incluindo posições iniciais obtidas de outras formas, $D = (1, 3, 3, 3)$.}
             \label{fig:fpt}
