@@ -79,27 +79,8 @@ Para aplicar ao contexto do MCSP, iniciamos o algoritmo construindo a representa
         \centering
         \newcommand{\mathdefault}[1][]{}
 
-        \begin{subfigure}[b]{0.33\textwidth}
-            \centering
-            \resizebox{\textwidth}{!}{\import{images/example}{iter-01.pgf}}
+        \resizebox{\textwidth}{!}{\import{images/example}{iter-multi.pgf}}
 
-            \caption{Iteração 1}
-        \end{subfigure}%
-        \hfill%
-        \begin{subfigure}[b]{0.33\textwidth}
-            \centering
-            \resizebox{\textwidth}{!}{\import{images/example}{iter-05.pgf}}
-
-            \caption{Iteração 5}
-        \end{subfigure}%
-        \hfill%
-        \begin{subfigure}[b]{0.33\textwidth}
-            \centering
-            \resizebox{\textwidth}{!}{\import{images/example}{iter-09.pgf}}
-
-            \caption{Iteração 9}
-        \end{subfigure}
-
-        \caption{Representação gráfica de algumas iterações do PSO na instância (\texttt{cdbcea}, \texttt{bceacd}) com 5 partículas. O espaço de busca original é composto de sete dimensões, uma para cada aresta, mas foi reduzido a duas dimensões para ter uma visualização mais clara. As cores indicam as média de blocos resultantes nas soluções daquela região antes da redução de dimenionalidade.}
+        \caption{Representação gráfica de algumas iterações do PSO na instância (\texttt{cdbcea}, \texttt{bceacd}) com 5 partículas. O espaço de busca original é composto de sete dimensões, uma para cada aresta, mas foi reduzido a duas dimensões para ter uma visualização mais clara. As cores indicam as média de blocos resultantes nas soluções daquela região antes da redução de dimensionalidade.}
         \label{fig:pso-iter-example}
     \end{figure}
