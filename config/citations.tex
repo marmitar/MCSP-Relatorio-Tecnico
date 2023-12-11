@@ -44,7 +44,7 @@
 %% e no \textcite
 \DeclareCiteCommand{\textcite}
     {\boolfalse{cbx:parens}}
-    {
+    {%
         \usebibmacro{citeindex}%
         \printtext[bibhyperref]{%
             \usebibmacro{prenote}%
